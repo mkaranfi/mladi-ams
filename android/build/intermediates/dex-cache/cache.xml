@@ -2,158 +2,158 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-5514dbb5946ae2b75d0a7dbdcee45f8b020787d0.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
+        jar="/Users/student/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\javax.inject-1-5bad27efa1395247dd00d4be8ce94f7eb7de4486.jar" />
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/javax.inject-1-01760b809dc226ccbd3fd2ffb89d275e522a811b.jar" />
     </item>
     <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.facebook.soloader\soloader\0.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-664ed8246eab1c9f9b0999b27e2d5aef24a5b328.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\0.11.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="98786c1770b531b9194fb6448b2a2692c64074b6">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-f48686d2d3df681ae89458b6c651e05acabad96a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fresco\0.11.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d31aadf33187c37a7cd63dc1b769f8c6e33f78c3">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-9062aacd60f821452f663076f6cfc1f6aeb6d779.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-4b97d4419a4e68deb0c14fee2f54e1faf8e41a68.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\AppData\Roaming\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.1\support-annotations-23.2.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\support-annotations-23.2.1-a61bd4af1b12057f3219ce36314fb5e4c78da404.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-ws\3.4.1\8ace66ef7002d98f633377c9e67daeeb196d8c3b\okhttp-ws-3.4.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\okhttp-ws-3.4.1-c9c255c400a7cbfd60045c54e433882c1ae9c097.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.9.0\f824591a0016efbaeddb8300bee54832a1398cfa\okio-1.9.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\okio-1.9.0-7e177fa56d38518b8b4da3894d059fbcde7de0ed.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.40.0\jars\libs\infer-annotations-1.5.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="dcac634e137395f79693ec760f081a86eb2bd84e">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\infer-annotations-1.5-d1029b18071ffcfa15e42040ac4c4b7e1be6d573.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\library-2.4.0-b090f768bf03f75b679789c3243a7601bac33f79.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-base\0.11.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ca63c521b5745ae9a09629d7ca67ff6bc2a967fe">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-fd33b59122628c8ac29f9c8caaafe4a6dd5b7165.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0-bf5153409fbd1a84ac7b3299c00fed175c95fcc7.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-okhttp3\0.11.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="2b8a01ad9da5d26d0067894c22e87597bca2c500">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-bae33c559c3a15329009f33a6f000794110e565b.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.0\5871fb60dc68d67da54a663c3fd636a10a532948\jsr305-3.0.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\jsr305-3.0.0-f774ca6b4472bb0b203489de3d40a16747250bb8.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\0.11.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3341b66c54367e777a0647e2db96c045329bfeab">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-c765c92ff2d1aa6c5acf0bcb00e7a005d55859cf.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.40.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="2d74afead061bfd6dda3c18734ebcf3fe0d84a7c">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-804491b181991d1f748350b6e8e597baaa671425.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.4.1\c7c4f9e35c2fd5900da24f9872e3971801f08ce0\okhttp-3.4.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\okhttp-3.4.1-d2124dbc4b4ca18e7a103ec939899ea7bedd34f2.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-urlconnection\3.4.1\63994437f62bc861bc20c605d12962f7246116d1\okhttp-urlconnection-3.4.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="63994437f62bc861bc20c605d12962f7246116d1">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\okhttp-urlconnection-3.4.1-860a4c92eb9d53a7b7f5e73d59320563fd131737.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.0.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-698c795d7571a3bff53a77b7fed2fa1745d4a721.jar" />
-    </item>
-    <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.facebook.fresco\drawee\0.11.0\jars\classes.jar"
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.11.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="1137942adeb03984c1311b662363dd38fc238fd3">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\classes-226e537b4a1dd5eff8c87149b9c78589af1aff1b.jar" />
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-96a1d25f9d8c40b97e6d521c23dc51eece8dc136.jar" />
     </item>
     <item
-        jar="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\libs\internal_impl-23.2.1.jar"
+        jar="/Users/student/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/library-2.4.0-26aaf4b50dd44bde06a72d4755c07cf1e5268c0c.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ca63c521b5745ae9a09629d7ca67ff6bc2a967fe">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-79054347e17fe3467626b357c59185d4cd4498b2.jar" />
+    </item>
+    <item
+        jar="/Users/student/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0-6f4dbc26be691a7993fb65444026028310574229.jar" />
+    </item>
+    <item
+        jar="/Library/android-sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.1/support-annotations-23.2.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.1-b365b2ce349a4735b2ed1a94c18832b0128d7803.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="98786c1770b531b9194fb6448b2a2692c64074b6">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-1d5db5ccff187a5593ae1d3eac3a53924306273e.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4356e230a981d1bbf047d848b91bc0d9b7c5bacc">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-814e384e2ebb48a709b3c4b4c3bffcd942a31d7d.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-9b00fc337e9720fb880e1eb4624d9ee8badc81fa.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2b8a01ad9da5d26d0067894c22e87597bca2c500">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-3f2c99a289c4b27bc9a18dba459eefc2879729ef.jar" />
+    </item>
+    <item
+        jar="/Users/student/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.4.1/63994437f62bc861bc20c605d12962f7246116d1/okhttp-urlconnection-3.4.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="63994437f62bc861bc20c605d12962f7246116d1">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.4.1-de66c4aa0d6574074fc2e70b25ce1fc8074287f5.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3341b66c54367e777a0647e2db96c045329bfeab">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-38ae0a1db52e0969802ccd9165455374f111b4ad.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.11.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d31aadf33187c37a7cd63dc1b769f8c6e33f78c3">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-20d02acb5d3e433e705b0630d1fca8fb69614430.jar" />
+    </item>
+    <item
+        jar="/Users/student/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0-30f3b1b0b50f83e83edc6c34822eede2cb0037a2.jar" />
+    </item>
+    <item
+        jar="/Users/student/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/c7c4f9e35c2fd5900da24f9872e3971801f08ce0/okhttp-3.4.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/okhttp-3.4.1-7385eff813501c807121daa912845447b89cbdb8.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.40.0/jars/libs/infer-annotations-1.5.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dcac634e137395f79693ec760f081a86eb2bd84e">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/infer-annotations-1.5-1d1d05c98f2d2a182e5d9d71991f98e38580963d.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-bb8e1a504e03d25ffe93ae556dca43256a97967e.jar" />
+    </item>
+    <item
+        jar="/Users/student/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.9.0/f824591a0016efbaeddb8300bee54832a1398cfa/okio-1.9.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/okio-1.9.0-980073e48b0ac69f50c3d68e14baecd5eeef6feb.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.1/jars/libs/internal_impl-23.2.1.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
-        <dex dex="C:\Users\Mile\Documents\Projects\mladi-ams\android\app\build\intermediates\pre-dexed\debug\internal_impl-23.2.1-dc9580cc2bb6e687d75c0c3f13112d3e1eb8b53a.jar" />
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.1-a4fb4e1bcec1bc030c8c5118e271138579ff4e17.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-96be4ef859428fe905c18286049caf2fbb59206b.jar" />
+    </item>
+    <item
+        jar="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.40.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2d74afead061bfd6dda3c18734ebcf3fe0d84a7c">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/classes-80a87d3edd7928734f377668c46da5c8d9a9e298.jar" />
+    </item>
+    <item
+        jar="/Users/student/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-ws/3.4.1/8ace66ef7002d98f633377c9e67daeeb196d8c3b/okhttp-ws-3.4.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8ace66ef7002d98f633377c9e67daeeb196d8c3b">
+        <dex dex="/Users/student/Documents/Projects/mladi-ams/android/app/build/intermediates/pre-dexed/debug/okhttp-ws-3.4.1-96f2a9feb8d937f2abc67970cd431a2dd07bfaaa.jar" />
     </item>
 
 </items>

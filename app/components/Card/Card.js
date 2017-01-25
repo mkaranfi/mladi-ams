@@ -18,15 +18,32 @@ class Card extends Component {
         Linking.openURL(url).catch(err => console.error('An error occurred', err));
     }
 
+    parseTimeMessage(crawlDate) {
+        let message = moment(crawlDate, 'DD.MM.YYYY HH:mm:ss').toNow(true).toString();
+
+        message = message.replace("seconds", "НОВО");
+        message = message.replace("a minute", "една минута");
+        message = message.replace("minutes", "минути");
+        message = message.replace("an hour", "еден час");
+        message = message.replace("hours", "часа");
+        message = message.replace("a day", "еден ден");
+        message = message.replace("days", "дена");
+        message = message.replace("a month", "еден месец");
+        message = message.replace("months", "месеца");
+        message = message.replace("a year", "една година");
+        message = message.replace("years", "години");
+
+        return message !== "НОВО" ? "пред " + message : message;
+    }
+
 
     render() {
-        let crawlDate = this.props.date;
-        let hours = moment().utcOffset(1).subtract(moment(crawlDate, 'DD.MM.YYYY HH:mm:ss')).hours();
+        message = this.parseTimeMessage(this.props.date);
         return (
             <TouchableHighlight onPress={()=>this._onPressButton(this.props.url)}>
             <View style={styles.card} ref={component => this._root = component} {...this.props}>
                 <View style={styles.cardRow}>
-                    <Text style={styles.smallText}>{this.props.site} | пред {hours} часа</Text>
+                    <Text style={styles.smallText}>{this.props.site} | {message}</Text>
                 </View>
                 <View style={styles.cardRow}>
                     <Text style={styles.title}>{this.props.title}</Text>

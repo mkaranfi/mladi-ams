@@ -8,6 +8,7 @@ import Card from './Card';
 import styles from './styles';
 const TRAININGS_API = 'http://mladi.ams.mk/eduservice.svc/GetTrainings';
 const INTERNSHIPS_API = 'http://mladi.ams.mk/eduservice.svc/GetInternships';
+const SCHOLLARSHIP_API = 'http://mladi.ams.mk/eduservice.svc/GetListings';
 var listingTypes = {
     CONFERENCE: 1,
     JOB: 2
@@ -23,12 +24,12 @@ class CardLayout extends Component {
 
     componentWillMount() {
         let thisClassScoped = this;
-        this.fetchData(INTERNSHIPS_API).then(function (data) {
+        this.fetchData(SCHOLLARSHIP_API).then(function (data) {
             // Conference || Seminar
             //thisClassScoped.filterThroughArray(data, listingTypes.CONFERENCE, 'Conference');
 
             // Internship || Job
-            data = thisClassScoped.filterThroughArray(data, listingTypes.JOB, 'Job');
+            // data = thisClassScoped.filterThroughArray(data, listingTypes.JOB, 'Job');
 
             thisClassScoped.setState({
                 dataSource: thisClassScoped.ds.cloneWithRows(data)
@@ -51,6 +52,7 @@ class CardLayout extends Component {
                 return item.Conference === keyword;
             else if (type == listingTypes.JOB)
                 return item.Job === keyword;
+            return true;
         })
     }
 
