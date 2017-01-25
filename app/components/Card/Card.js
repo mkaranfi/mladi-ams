@@ -32,7 +32,7 @@ class Card extends Component {
                     <Text style={styles.title}>{this.props.title}</Text>
                 </View>
                 <View style={styles.cardRow}>
-                    <Text numberOfLines={4} style={styles.mediumText}>{this.props.description}</Text>
+                    <Text numberOfLines={3} style={styles.mediumText}>{this.props.description}</Text>
                 </View>
             </View>
             </TouchableHighlight>

@@ -19,11 +19,11 @@ let styles = StyleSheet.create({
         borderBottomColor: '#cfcfc2',
         backgroundColor: '#fff',
         marginBottom: 12,
-        padding: 8
+        padding: 10
     },
     cardRow: {
-        paddingLeft: 8,
-        paddingRight: 8
+        paddingLeft: 15,
+        paddingRight: 15
     },
     container: {
         flex: 1,
