@@ -41,17 +41,17 @@ class Card extends Component {
         message = this.parseTimeMessage(this.props.date);
         return (
             <TouchableHighlight onPress={()=>this._onPressButton(this.props.url)}>
-            <View style={styles.card} ref={component => this._root = component} {...this.props}>
-                <View style={styles.cardRow}>
-                    <Text style={styles.smallText}>{this.props.site} | {message}</Text>
+                <View style={styles.card} ref={component => this._root = component} {...this.props}>
+                    <View style={styles.cardRow}>
+                        <Text style={styles.smallText}>{this.props.site} | {message}</Text>
+                    </View>
+                    <View style={styles.cardRow}>
+                        <Text style={styles.title}>{this.props.title}</Text>
+                    </View>
+                    <View style={styles.cardRow}>
+                        <Text numberOfLines={3} style={styles.mediumText}>{this.props.description}</Text>
+                    </View>
                 </View>
-                <View style={styles.cardRow}>
-                    <Text style={styles.title}>{this.props.title}</Text>
-                </View>
-                <View style={styles.cardRow}>
-                    <Text numberOfLines={3} style={styles.mediumText}>{this.props.description}</Text>
-                </View>
-            </View>
             </TouchableHighlight>
         );
     }

@@ -73,7 +73,7 @@ class CardLayout extends Component {
         let date = rowData.CrawlDate === undefined ? rowData.Inserted : rowData.CrawlDate;
 
         return (<Card {...this.props} title={title} site={source} date={date}
-                      description={rowData.Description} url={rowData.Link}/>);
+                                      description={rowData.Description} url={rowData.Link}/>);
     }
 
 }
