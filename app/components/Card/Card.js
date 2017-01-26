@@ -21,7 +21,7 @@ class Card extends Component {
     parseTimeMessage(crawlDate) {
         let message = moment(crawlDate, 'DD.MM.YYYY HH:mm:ss').toNow(true).toString();
 
-        message = message.replace("seconds", "НОВО");
+        message = message.replace("a few seconds", "неколку секунди");
         message = message.replace("a minute", "една минута");
         message = message.replace("minutes", "минути");
         message = message.replace("an hour", "еден час");
@@ -33,7 +33,7 @@ class Card extends Component {
         message = message.replace("a year", "една година");
         message = message.replace("years", "години");
 
-        return message !== "НОВО" ? "пред " + message : message;
+        return "пред " + message;
     }
 
 
