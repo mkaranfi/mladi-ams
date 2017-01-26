@@ -13,11 +13,11 @@ import {
 } from 'react-native';
 
 import CardLayout from './app/components/Card/CardLayout';
-
+import TabBar from './app/components/TabBar/TabBar';
 export default class mladiams extends Component {
   render() {
     return (
-      <CardLayout />
+      <TabBar />
     );
   }
 }
