@@ -4,12 +4,6 @@
 import {StyleSheet} from 'react-native';
 
 let styles = StyleSheet.create({
-    title: {
-        fontWeight: 'bold',
-        fontSize: 20,
-        marginTop: 2,
-        marginBottom: 7
-    },
     card: {
         flex: 1,
         flexDirection: 'column',
@@ -35,6 +29,15 @@ let styles = StyleSheet.create({
     },
     smallText: {
         fontSize: 10
+    },
+    title: {
+        color: '#444',
+        fontSize: 20,
+        marginTop: 5,
+        marginBottom: 7
+    },
+    topText: {
+        fontWeight: 'bold'
     }
 });
 export default styles;

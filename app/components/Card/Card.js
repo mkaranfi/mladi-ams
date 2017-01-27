@@ -43,7 +43,7 @@ class Card extends Component {
             <TouchableHighlight onPress={()=>this._onPressButton(this.props.url)}>
                 <View style={styles.card} ref={component => this._root = component} {...this.props}>
                     <View style={styles.cardRow}>
-                        <Text style={styles.smallText}>{this.props.site} | {message}</Text>
+                        <Text style={[styles.smallText, styles.topText]}>{this.props.site} | {message}</Text>
                     </View>
                     <View style={styles.cardRow}>
                         <Text style={styles.title}>{this.props.title}</Text>

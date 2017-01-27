@@ -8,11 +8,12 @@ import Card from './Card';
 import styles from './styles';
 const TRAININGS_API = 'http://mladi.ams.mk/eduservice.svc/GetTrainings';
 const INTERNSHIPS_API = 'http://mladi.ams.mk/eduservice.svc/GetInternships';
-const SCHOLLARSHIP_API = 'http://mladi.ams.mk/eduservice.svc/GetListings';
+const SCHOLLARSHIPS_API = 'http://mladi.ams.mk/eduservice.svc/GetListings';
 var listingTypes = {
     CONFERENCE: 1,
     JOB: 2
 };
+
 class CardLayout extends Component {
     constructor(props) {
         super(props);

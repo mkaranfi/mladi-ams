@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/student/Documents/Projects/mladi-ams/android/app/src/main/assets"/></dataSet><dataSet config="debug"><source path="/Users/student/Documents/Projects/mladi-ams/android/app/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/student/Documents/Projects/mladi-ams/android/app/src/main/assets"><file name="fonts/Geometria-Heavy.otf" path="/Users/student/Documents/Projects/mladi-ams/android/app/src/main/assets/fonts/Geometria-Heavy.otf"/></source></dataSet><dataSet config="debug"><source path="/Users/student/Documents/Projects/mladi-ams/android/app/src/debug/assets"/></dataSet></merger>

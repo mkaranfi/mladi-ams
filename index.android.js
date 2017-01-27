@@ -12,12 +12,12 @@ import {
   View
 } from 'react-native';
 
-import CardLayout from './app/components/Card/CardLayout';
+import CategorySelection from './app/components/CategorySelection/CategorySelection';
 
 export default class mladiams extends Component {
   render() {
     return (
-      <CardLayout />
+      <CategorySelection />
     );
   }
 }
