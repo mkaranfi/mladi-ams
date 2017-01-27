@@ -17,7 +17,9 @@ import TabBar from './app/components/TabBar/TabBar';
 export default class mladiams extends Component {
   render() {
     return (
-      <TabBar />
+      <View style={styles.container}>
+        <TabBar />
+      </View>
     );
   }
 }

@@ -1,3 +1,5 @@
+import {StyleSheet} from 'react-native';
+
 const styles = StyleSheet.create({
   tabView: {
     flex: 1,

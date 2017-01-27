@@ -9,36 +9,35 @@ import {
 import CardLayout from '../Card/CardLayout';
 import CustomBar from './CustomBar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-
 export default React.createClass({
   render() {
     return <ScrollableTabView
-      tabBarPosition="overlayBottom"
+      tabBarPosition="bottom"
       style={{marginTop: 20, }}
       initialPage={0}
       renderTabBar={() => <CustomBar />}
       >
-      <ScrollView tabLabel="ios-paper" style={styles.tabView}>
+      <ScrollView tabLabel="ios-paper">
         <CardLayout />
       </ScrollView>
       <ScrollView tabLabel="ios-people" style={styles.tabView}>
         <View style={styles.card}>
-          <Text>Friends</Text>
+          <Text>Организации</Text>
         </View>
       </ScrollView>
-      <ScrollView tabLabel="ios-chatboxes" style={styles.tabView}>
+      <ScrollView tabLabel="ios-school" style={styles.tabView}>
         <View style={styles.card}>
-          <Text>Messenger</Text>
+          <Text>Образовни установи</Text>
         </View>
       </ScrollView>
-      <ScrollView tabLabel="ios-notifications" style={styles.tabView}>
+      <ScrollView tabLabel="ios-cart" style={styles.tabView}>
         <View style={styles.card}>
-          <Text>Notifications</Text>
+          <Text>Попусти</Text>
         </View>
       </ScrollView>
-      <ScrollView tabLabel="ios-list" style={styles.tabView}>
+      <ScrollView tabLabel="ios-information-circle" style={styles.tabView}>
         <View style={styles.card}>
-          <Text>Other nav</Text>
+          <Text>Актуелно</Text>
         </View>
       </ScrollView>
     </ScrollableTabView>;
