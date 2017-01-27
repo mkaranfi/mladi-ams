@@ -21,14 +21,18 @@ export default React.createClass({
         <CardLayout />
       </ScrollView>
       <ScrollView tabLabel="ios-people" style={styles.tabView}>
-        <View style={styles.card}>
-          <Text>Организации</Text>
-        </View>
+        <ScrollableTabView>
+            <View tabLabel="Студентски организации"></View>
+            <View tabLabel="Невладини организации"></View>
+        </ScrollableTabView>
       </ScrollView>
       <ScrollView tabLabel="ios-school" style={styles.tabView}>
-        <View style={styles.card}>
-          <Text>Образовни установи</Text>
-        </View>
+          <ScrollableTabView>
+            <View tabLabel="Средни училишта"></View>
+            <View tabLabel="Универзитети"></View>
+            <View tabLabel="Студентски домови"></View>
+            <View tabLabel="Библиотеки"></View>
+          </ScrollableTabView>
       </ScrollView>
       <ScrollView tabLabel="ios-cart" style={styles.tabView}>
         <View style={styles.card}>
