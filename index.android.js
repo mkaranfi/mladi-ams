@@ -8,12 +8,14 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
+  ScrollView,
   Text,
   View
 } from 'react-native';
-
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 import CardLayout from './app/components/Card/CardLayout';
 import TabBar from './app/components/TabBar/TabBar';
+import TabSwipe from './TabSwipe';
 export default class mladiams extends Component {
   render() {
     return (
