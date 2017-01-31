@@ -6,9 +6,6 @@ import {View, TouchableHighlight, Text} from 'react-native';
 
 import styles from './styles';
 class Button extends Component {
-    _onPress() {
-    }
-
     render() {
         return (
             <TouchableHighlight

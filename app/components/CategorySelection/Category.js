@@ -10,10 +10,13 @@ import styles from './styles';
 class Category extends Component {
     constructor(props) {
         super(props);
-        this.state = {pressStatus: false};
+        this.state = {
+            pressStatus: false
+        };
     }
 
     _onPress() {
+        this.props.parentFunct(this.props.text);
         let status = !this.state.pressStatus;
         this.setState({
             pressStatus: status
