@@ -10,8 +10,13 @@ import styles from './styles';
 var selected = [];
 class CategorySelection extends Component {
 
+    _onPress() {
+        // TODO...
+        // navigate to tab screen
+    }
+
     setCategories(categories) {
-        // selected = categories;
+        selected = categories;
     }
 
     render() {
@@ -19,11 +24,11 @@ class CategorySelection extends Component {
             <View style={styles.contentLayout}>
                 <Text style={styles.leadText}>ОДБЕРИ ШТО ЌЕ ЧИТАШ</Text>
                 <Text style={styles.subText}>Допри на категориите за кои сакаш да се информираш.</Text>
-                <Categories categories={this.setCategories}/>
-                <Button />
-                <Text>{selected}</Text>
+                <Categories categories={this.setCategories.bind(this)}/>
+                <Button onPress={this._onPress.bind(this)}/>
             </View>
         )
     }
+
 }
 export default CategorySelection;

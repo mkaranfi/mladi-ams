@@ -10,7 +10,7 @@ class Button extends Component {
         return (
             <TouchableHighlight
                 style={styles.touchable}
-                onPress={this._onPress}>
+                onPress={this.props.onPress}>
                 <View>
                     <Text style={styles.saveButton}>Зачувај</Text>
                 </View>

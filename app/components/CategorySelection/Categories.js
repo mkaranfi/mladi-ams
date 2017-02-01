@@ -15,18 +15,22 @@ class Categories extends Component {
 
     addOrRemoveCategory(categoryName) {
         selectedCategories.includes(categoryName) ? selectedCategories.slice(selectedCategories.indexOf(selectedCategories)) :
-            selectedCategories.push(selectedCategories);
-        // this.props.categories(selectedCategories);
+            selectedCategories.push(categoryName);
+        this.props.categories(selectedCategories);
+    }
+
+    getCategories(){
+        return selectedCategories;
     }
 
     render() {
         return (
             <View style={styles.categoriesLayout}>
-                <Category parentFunct={this.addOrRemoveCategory} text="СТИПЕНДИИ"/>
-                <Category parentFunct={this.addOrRemoveCategory} text="ПРАКСИ"/>
-                <Category parentFunct={this.addOrRemoveCategory} text="РАБОТА"/>
-                <Category parentFunct={this.addOrRemoveCategory} text="СЕМИНАРИ"/>
-                <Category parentFunct={this.addOrRemoveCategory} text="КОНФЕРЕНЦИИ"/>
+                <Category parentFunct={this.addOrRemoveCategory.bind(this)} text="СТИПЕНДИИ"/>
+                <Category parentFunct={this.addOrRemoveCategory.bind(this)} text="ПРАКСИ"/>
+                <Category parentFunct={this.addOrRemoveCategory.bind(this)} text="РАБОТА"/>
+                <Category parentFunct={this.addOrRemoveCategory.bind(this)} text="СЕМИНАРИ"/>
+                <Category parentFunct={this.addOrRemoveCategory.bind(this)} text="КОНФЕРЕНЦИИ"/>
             </View>
         );
     }

@@ -28,7 +28,7 @@ class Category extends Component {
             <View style={styles.categoryLayout}>
                 <TouchableOpacity
                     onPress={this._onPress.bind(this)}
-                    style={[styles.category, this.state.pressStatus ? styles.lightgray : styles.dark]}>
+                    style={[styles.category, this.state.pressStatus ? styles.dark : styles.lightgray]}>
                     <Text style={styles.innerText}>{this.props.text}</Text>
                 </TouchableOpacity>
             </View>
