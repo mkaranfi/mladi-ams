@@ -2,7 +2,7 @@
  * Created by Mile on 24-Jan-17.
  */
 import React, {Component} from 'react';
-import {ListView, View, AsyncStorage} from 'react-native';
+import {ListView, View, AsyncStorage, ActivityIndicator} from 'react-native';
 
 import Card from './Card';
 import styles from './styles';
@@ -19,43 +19,38 @@ class CardLayout extends Component {
         super(props);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
-            dataSource: this.ds
+            dataSource: this.ds.cloneWithRows(this.props.data)
         };
     }
 
-    manageDataFromAPI(data, scope) {
-        // Conference || Seminar
-        //scope.filterThroughArray(data, listingTypes.CONFERENCE, 'Conference');
+    // manageDataFromAPI(data, scope) {
+    //     // Conference || Seminar
+    //     //scope.filterThroughArray(data, listingTypes.CONFERENCE, 'Conference');
+    //
+    //     // Internship || Job
+    //     // data = scope.filterThroughArray(data, listingTypes.JOB, 'Job');
+    //
+    //     scope.setState({
+    //         dataSource: scope.ds.cloneWithRows(data),
+    //         isLoading: false
+    //     });
+    // }
 
-        // Internship || Job
-        // data = scope.filterThroughArray(data, listingTypes.JOB, 'Job');
-
-        scope.setState({
-            dataSource: scope.ds.cloneWithRows(data)
-        });
-    }
-
-    componentWillMount() {
-        let thisClassScoped = this;
-        this.fetchData(TRAININGS_API).then(function (data) {
-            AsyncStorage.setItem('cardData', JSON.stringify(data));
-            thisClassScoped.manageDataFromAPI(data, thisClassScoped);
-        })
-            .catch((err) => {
-                AsyncStorage.getItem('cardData')
-                    .then((data) => JSON.parse(data))
-                    .then((data) => {
-                        data !== null ? thisClassScoped.manageDataFromAPI(data, thisClassScoped) :
-                            console.error('Error: ' + err);
-                    });
-            });
-    }
-
-    fetchData(query) {
-        return fetch(query)
-            .then((response) => response.json())
-            .then((data) => data)
-    }
+    // componentWillMount() {
+    //     let thisClassScoped = this;
+    //     this.fetchData(TRAININGS_API).then(function (data) {
+    //         AsyncStorage.setItem('cardData', JSON.stringify(data));
+    //         thisClassScoped.manageDataFromAPI(data, thisClassScoped);
+    //     })
+    //         .catch((err) => {
+    //             AsyncStorage.getItem('cardData')
+    //                 .then((data) => JSON.parse(data))
+    //                 .then((data) => {
+    //                     data !== null ? thisClassScoped.manageDataFromAPI(data, thisClassScoped) :
+    //                         console.error('Error: ' + err);
+    //                 });
+    //         });
+    // }
 
     filterThroughArray(array, type, keyword) {
         return array.filter(function (item) {
