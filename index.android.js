@@ -15,11 +15,13 @@ import {
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import CardLayout from './app/components/Card/CardLayout';
 import TabBar from './app/components/TabBar/TabBar';
-import TabSwipe from './TabSwipe';
+import SubBar from './app/components/SubBar/SubBar';
 export default class mladiams extends Component {
   render() {
     return (
-      <TabBar />
+      <View style={styles.container}>
+        <SubBar />
+      </View>
     );
   }
 }
@@ -30,6 +32,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  tabView: {
+    flex: 1,
+    padding: 10,
+    backgroundColor: 'rgba(0,0,0,0.01)',
   },
   welcome: {
     fontSize: 20,
