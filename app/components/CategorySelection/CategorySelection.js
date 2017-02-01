@@ -13,6 +13,9 @@ class CategorySelection extends Component {
     _onPress() {
         // TODO...
         // navigate to tab screen
+        this.props.navigator.push({
+            name: 'CardLayout' // Matches route.name
+        })
     }
 
     setCategories(categories) {
