@@ -2,7 +2,11 @@ node_modules/**/*
 
 ## Build generated
 build/
-android/app/build/**/*
+android/.gradle/*
+android/build/**
+android/app/build/**
+android/gradlew
+android/gradlew.bat
 DerivedData/
 
 ## Various settings
