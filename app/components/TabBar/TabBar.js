@@ -20,7 +20,7 @@ export default React.createClass({
       renderTabBar={() => <CustomBar />}
     >
       <ScrollView tabLabel="ios-paper">
-        <CardLayout />
+        {/*<CardLayout />*/}
       </ScrollView>
       <ScrollView tabLabel="ios-people" style={styles.tabView}>
           <ScrollableTabView renderTabBar={() => <TopBar />}>

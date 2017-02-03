@@ -7,11 +7,13 @@ import {Navigator} from 'react-native';
 import CardLayout from './Card/CardLayout';
 import CategorySelection from './CategorySelection/CategorySelection';
 import GetData from './Card/GetData';
+import TabBar from './TabBar/TabBar';
+
 class MyRouter extends Component {
     render() {
         return (
             <Navigator
-                initialRoute={{name: 'CategorySelection'}}
+                initialRoute={{name: 'TabBar'}}
                 renderScene={ this.renderScene.bind(this) }/>
         );
     }
@@ -25,6 +27,9 @@ class MyRouter extends Component {
         }
         if(route.name == 'GetData') {
             return <GetData navigator={navigator} />
+        }
+        if(route.name == 'TabBar') {
+            return <TabBar navigator={navigator} />
         }
     }
 }

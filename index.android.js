@@ -12,6 +12,7 @@ import {
     View
 } from 'react-native';
 
+import TabBar from './app/components/TabBar/TabBar';
 import MyRouter from './app/components/route';
 
 export default class mladiams extends Component {

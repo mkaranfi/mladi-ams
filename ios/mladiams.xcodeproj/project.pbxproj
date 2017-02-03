@@ -24,6 +24,25 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		CE8B20201E44EC7000E59781 /* Exo2-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B200D1E44EC7000E59781 /* Exo2-Black.otf */; };
+		CE8B20211E44EC7000E59781 /* Exo2-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B200E1E44EC7000E59781 /* Exo2-BlackItalic.otf */; };
+		CE8B20221E44EC7000E59781 /* Exo2-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B200F1E44EC7000E59781 /* Exo2-Bold.otf */; };
+		CE8B20231E44EC7000E59781 /* Exo2-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B20101E44EC7000E59781 /* Exo2-BoldItalic.otf */; };
+		CE8B20241E44EC7000E59781 /* Exo2-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B20111E44EC7000E59781 /* Exo2-ExtraBold.otf */; };
+		CE8B20251E44EC7000E59781 /* Exo2-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B20121E44EC7000E59781 /* Exo2-ExtraBoldItalic.otf */; };
+		CE8B20261E44EC7000E59781 /* Exo2-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B20131E44EC7000E59781 /* Exo2-ExtraLight.otf */; };
+		CE8B20271E44EC7000E59781 /* Exo2-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B20141E44EC7000E59781 /* Exo2-ExtraLightItalic.otf */; };
+		CE8B20281E44EC7000E59781 /* Exo2-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B20151E44EC7000E59781 /* Exo2-Italic.otf */; };
+		CE8B20291E44EC7000E59781 /* Exo2-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B20161E44EC7000E59781 /* Exo2-Light.otf */; };
+		CE8B202A1E44EC7000E59781 /* Exo2-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B20171E44EC7000E59781 /* Exo2-LightItalic.otf */; };
+		CE8B202B1E44EC7000E59781 /* Exo2-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B20181E44EC7000E59781 /* Exo2-Medium.otf */; };
+		CE8B202C1E44EC7000E59781 /* Exo2-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B20191E44EC7000E59781 /* Exo2-MediumItalic.otf */; };
+		CE8B202D1E44EC7000E59781 /* Exo2-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B201A1E44EC7000E59781 /* Exo2-Regular.otf */; };
+		CE8B202E1E44EC7000E59781 /* Exo2-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B201B1E44EC7000E59781 /* Exo2-SemiBold.otf */; };
+		CE8B202F1E44EC7000E59781 /* Exo2-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B201C1E44EC7000E59781 /* Exo2-SemiBoldItalic.otf */; };
+		CE8B20301E44EC7000E59781 /* Exo2-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B201D1E44EC7000E59781 /* Exo2-Thin.otf */; };
+		CE8B20311E44EC7000E59781 /* Exo2-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B201E1E44EC7000E59781 /* Exo2-ThinItalic.otf */; };
+		CE8B20321E44EC7000E59781 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8B201F1E44EC7000E59781 /* Ionicons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,6 +253,25 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		CE8B200D1E44EC7000E59781 /* Exo2-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Black.otf"; sourceTree = "<group>"; };
+		CE8B200E1E44EC7000E59781 /* Exo2-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-BlackItalic.otf"; sourceTree = "<group>"; };
+		CE8B200F1E44EC7000E59781 /* Exo2-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Bold.otf"; sourceTree = "<group>"; };
+		CE8B20101E44EC7000E59781 /* Exo2-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-BoldItalic.otf"; sourceTree = "<group>"; };
+		CE8B20111E44EC7000E59781 /* Exo2-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-ExtraBold.otf"; sourceTree = "<group>"; };
+		CE8B20121E44EC7000E59781 /* Exo2-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		CE8B20131E44EC7000E59781 /* Exo2-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-ExtraLight.otf"; sourceTree = "<group>"; };
+		CE8B20141E44EC7000E59781 /* Exo2-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		CE8B20151E44EC7000E59781 /* Exo2-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Italic.otf"; sourceTree = "<group>"; };
+		CE8B20161E44EC7000E59781 /* Exo2-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Light.otf"; sourceTree = "<group>"; };
+		CE8B20171E44EC7000E59781 /* Exo2-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-LightItalic.otf"; sourceTree = "<group>"; };
+		CE8B20181E44EC7000E59781 /* Exo2-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Medium.otf"; sourceTree = "<group>"; };
+		CE8B20191E44EC7000E59781 /* Exo2-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-MediumItalic.otf"; sourceTree = "<group>"; };
+		CE8B201A1E44EC7000E59781 /* Exo2-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Regular.otf"; sourceTree = "<group>"; };
+		CE8B201B1E44EC7000E59781 /* Exo2-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-SemiBold.otf"; sourceTree = "<group>"; };
+		CE8B201C1E44EC7000E59781 /* Exo2-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		CE8B201D1E44EC7000E59781 /* Exo2-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-Thin.otf"; sourceTree = "<group>"; };
+		CE8B201E1E44EC7000E59781 /* Exo2-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Exo2-ThinItalic.otf"; sourceTree = "<group>"; };
+		CE8B201F1E44EC7000E59781 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +384,7 @@
 		13B07FAE1A68108700A75B9A /* mladiams */ = {
 			isa = PBXGroup;
 			children = (
+				CE8B200C1E44EC7000E59781 /* Fonts */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -436,6 +475,32 @@
 				00E356EE1AD99517003FC87E /* mladiamsTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CE8B200C1E44EC7000E59781 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CE8B200D1E44EC7000E59781 /* Exo2-Black.otf */,
+				CE8B200E1E44EC7000E59781 /* Exo2-BlackItalic.otf */,
+				CE8B200F1E44EC7000E59781 /* Exo2-Bold.otf */,
+				CE8B20101E44EC7000E59781 /* Exo2-BoldItalic.otf */,
+				CE8B20111E44EC7000E59781 /* Exo2-ExtraBold.otf */,
+				CE8B20121E44EC7000E59781 /* Exo2-ExtraBoldItalic.otf */,
+				CE8B20131E44EC7000E59781 /* Exo2-ExtraLight.otf */,
+				CE8B20141E44EC7000E59781 /* Exo2-ExtraLightItalic.otf */,
+				CE8B20151E44EC7000E59781 /* Exo2-Italic.otf */,
+				CE8B20161E44EC7000E59781 /* Exo2-Light.otf */,
+				CE8B20171E44EC7000E59781 /* Exo2-LightItalic.otf */,
+				CE8B20181E44EC7000E59781 /* Exo2-Medium.otf */,
+				CE8B20191E44EC7000E59781 /* Exo2-MediumItalic.otf */,
+				CE8B201A1E44EC7000E59781 /* Exo2-Regular.otf */,
+				CE8B201B1E44EC7000E59781 /* Exo2-SemiBold.otf */,
+				CE8B201C1E44EC7000E59781 /* Exo2-SemiBoldItalic.otf */,
+				CE8B201D1E44EC7000E59781 /* Exo2-Thin.otf */,
+				CE8B201E1E44EC7000E59781 /* Exo2-ThinItalic.otf */,
+				CE8B201F1E44EC7000E59781 /* Ionicons.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -747,8 +812,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE8B202B1E44EC7000E59781 /* Exo2-Medium.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				CE8B20311E44EC7000E59781 /* Exo2-ThinItalic.otf in Resources */,
+				CE8B20211E44EC7000E59781 /* Exo2-BlackItalic.otf in Resources */,
+				CE8B202C1E44EC7000E59781 /* Exo2-MediumItalic.otf in Resources */,
+				CE8B202D1E44EC7000E59781 /* Exo2-Regular.otf in Resources */,
+				CE8B20261E44EC7000E59781 /* Exo2-ExtraLight.otf in Resources */,
+				CE8B20281E44EC7000E59781 /* Exo2-Italic.otf in Resources */,
+				CE8B20291E44EC7000E59781 /* Exo2-Light.otf in Resources */,
+				CE8B20241E44EC7000E59781 /* Exo2-ExtraBold.otf in Resources */,
+				CE8B202A1E44EC7000E59781 /* Exo2-LightItalic.otf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				CE8B20201E44EC7000E59781 /* Exo2-Black.otf in Resources */,
+				CE8B20301E44EC7000E59781 /* Exo2-Thin.otf in Resources */,
+				CE8B202F1E44EC7000E59781 /* Exo2-SemiBoldItalic.otf in Resources */,
+				CE8B202E1E44EC7000E59781 /* Exo2-SemiBold.otf in Resources */,
+				CE8B20251E44EC7000E59781 /* Exo2-ExtraBoldItalic.otf in Resources */,
+				CE8B20321E44EC7000E59781 /* Ionicons.ttf in Resources */,
+				CE8B20231E44EC7000E59781 /* Exo2-BoldItalic.otf in Resources */,
+				CE8B20221E44EC7000E59781 /* Exo2-Bold.otf in Resources */,
+				CE8B20271E44EC7000E59781 /* Exo2-ExtraLightItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
