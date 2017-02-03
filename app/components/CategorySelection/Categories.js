@@ -19,7 +19,7 @@ class Categories extends Component {
         this.props.categories(selectedCategories);
     }
 
-    getCategories(){
+    getCategories() {
         return selectedCategories;
     }
 
