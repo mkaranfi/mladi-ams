@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import CardLayout from '../Card/CardLayout';
-import CustomBar from './CustomBar';
+import CustomBar from './TopBar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 //const styles = require('./styles');
 

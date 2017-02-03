@@ -15,13 +15,13 @@ import {
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import CardLayout from './app/components/Card/CardLayout';
 import TabBar from './app/components/TabBar/TabBar';
-import SubBar from './app/components/SubBar/SubBar';
+import TopBar from './app/components/SubBar/TopBar';
 export default class mladiams extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <SubBar />
-      </View>
+        <View style={styles.container}>
+          <TabBar />
+        </View>  
     );
   }
 }
