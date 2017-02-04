@@ -6,14 +6,13 @@ import {Navigator} from 'react-native';
 
 import CardLayout from './Card/CardLayout';
 import CategorySelection from './CategorySelection/CategorySelection';
-import GetData from './Card/GetData';
 import TabBar from './TabBar/TabBar';
 
 class MyRouter extends Component {
     render() {
         return (
             <Navigator
-                initialRoute={{name: 'TabBar'}}
+                initialRoute={{name: 'CategorySelection'}}
                 renderScene={ this.renderScene.bind(this) }/>
         );
     }
@@ -23,13 +22,10 @@ class MyRouter extends Component {
             return <CategorySelection navigator={navigator}/>
         }
         if (route.name == 'CardLayout') {
-            return <CardLayout data={route.data} navigator={navigator}/>
-        }
-        if(route.name == 'GetData') {
-            return <GetData navigator={navigator} />
+            return <CardLayout navigator={navigator}/>
         }
         if(route.name == 'TabBar') {
-            return <TabBar navigator={navigator} />
+            return <TabBar categories={route.categories} navigator={navigator} />
         }
     }
 }

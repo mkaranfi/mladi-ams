@@ -4,6 +4,7 @@
 import React, {Component} from 'react';
 import {ActivityIndicator, ListView, AsyncStorage, Navigator} from 'react-native';
 
+import styles from './styles';
 const TRAININGS_API = 'http://mladi.ams.mk/eduservice.svc/GetTrainings';
 const INTERNSHIPS_API = 'http://mladi.ams.mk/eduservice.svc/GetInternships';
 const SCHOLLARSHIPS_API = 'http://mladi.ams.mk/eduservice.svc/GetListings';
@@ -68,6 +69,7 @@ class GetData extends Component {
         return (
             <ActivityIndicator
                 animating={this.state.isLoading}
+                style={styles.spinner}
                 size="large"
             />
         );

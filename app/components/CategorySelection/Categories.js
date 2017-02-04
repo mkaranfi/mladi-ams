@@ -14,13 +14,9 @@ class Categories extends Component {
     }
 
     addOrRemoveCategory(categoryName) {
-        selectedCategories.includes(categoryName) ? selectedCategories.slice(selectedCategories.indexOf(selectedCategories)) :
+        selectedCategories.includes(categoryName) ? selectedCategories.splice(selectedCategories.indexOf(categoryName), 1) :
             selectedCategories.push(categoryName);
         this.props.categories(selectedCategories);
-    }
-
-    getCategories(){
-        return selectedCategories;
     }
 
     render() {

@@ -11,10 +11,9 @@ var selected = [];
 class CategorySelection extends Component {
 
     _onPress() {
-        // TODO...
-        // navigate to tab screen
         this.props.navigator.push({
-            name: 'GetData' // Matches route.name
+            name: 'TabBar',
+            categories: selected
         })
     }
 

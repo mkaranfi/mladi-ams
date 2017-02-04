@@ -30,6 +30,11 @@ let styles = StyleSheet.create({
     smallText: {
         fontSize: 10
     },
+    spinner: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     title: {
         color: '#444',
         fontSize: 20,
