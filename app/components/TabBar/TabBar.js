@@ -26,9 +26,8 @@ class TabBar extends Component {
 
     renderScene(route, navigator) {
         return <ScrollableTabView
-            tabBarPosition="bottom"
-            locked={true}
-            style={{marginTop: 20,}}
+            tabBarPosition="top"
+            style={{marginTop: 10,}}
             initialPage={0}
             renderTabBar={() => <CustomBar />}
         >
@@ -56,47 +55,26 @@ class TabBar extends Component {
                     </View>}
                 </ScrollableTabView>
             </ScrollView>
-            <ScrollView tabLabel="ios-people" style={styles.tabView}>
-                <ScrollableTabView renderTabBar={() => <TopBar />}>
-                    <View tabLabel="Студентски Организации">
-                        <Text>"Gi"</Text>
-                    </View>
-                    <View tabLabel="Невладини организации">
-                        <Text>"Gо"</Text>
-                    </View>
-                </ScrollableTabView>
-            </ScrollView>
-            <ScrollView tabLabel="ios-school" style={styles.tabView}>
-                <ScrollableTabView renderTabBar={() => <TopBar />}>
-                    <View tabLabel="Средни училишта">
-                        <Text>"Gi"</Text>
-                    </View>
-                    <View tabLabel="Универзитети">
-                        <Text>"Gо"</Text>
-                    </View>
-                    <View tabLabel="Студентски домови">
-                        <Text>"Gu"</Text>
-                    </View>
-                    <View tabLabel="Библиотеки">
-                        <Text>"Gr"</Text>
-                    </View>
-                </ScrollableTabView>
-            </ScrollView>
-            <ScrollView tabLabel="ios-cart" style={styles.tabView}>
+            <View tabLabel="ios-people" style={styles.tabView}>
+                <View style={styles.card}>
+                    <Text>Организации</Text>
+                </View>
+            </View>
+            <View tabLabel="ios-school" style={styles.tabView}>
+                <View style={styles.card}>
+                    <Text>Училишта</Text>
+                </View>
+            </View>
+            <View tabLabel="ios-cart" style={styles.tabView}>
                 <View style={styles.card}>
                     <Text>Попусти</Text>
                 </View>
-            </ScrollView>
-            <ScrollView tabLabel="ios-information-circle" style={styles.tabView}>
-                <ScrollableTabView renderTabBar={() => <TopBar />}>
-                    <View tabLabel="Актуелно">
-                        <Text>"Gi"</Text>
-                    </View>
-                    <View tabLabel="Проекти">
-                        <Text>"Gо"</Text>
-                    </View>
-                </ScrollableTabView>
-            </ScrollView>
+            </View>
+            <View tabLabel="ios-information-circle" style={styles.tabView}>
+                <View style={styles.card}>
+                    <Text>Актуелно</Text>
+                </View>
+            </View>
         </ScrollableTabView>;
     }
 }
