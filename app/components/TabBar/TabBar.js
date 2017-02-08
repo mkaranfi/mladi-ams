@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import CardLayout from '../Card/CardLayout';
+import InfoCardLayout from '../Card/InfoCardLayout';
 import TopBar from '../SubBar/TopBar';
 import CustomBar from './CustomBar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
@@ -56,29 +57,29 @@ class TabBar extends Component {
                     </View>}
                 </ScrollableTabView>
             </ScrollView>
-            <ScrollView tabLabel="ios-people" style={styles.tabView}>
+            <ScrollView tabLabel="ios-people">
                 <ScrollableTabView renderTabBar={() => <TopBar />}>
                     <View tabLabel="Студентски Организации">
-                        <Text>"Gi"</Text>
+                        <InfoCardLayout categoryName="Студентска организација" />
                     </View>
                     <View tabLabel="Невладини организации">
-                        <Text>"Gо"</Text>
+                        <InfoCardLayout categoryName="Организација" />
                     </View>
                 </ScrollableTabView>
             </ScrollView>
-            <ScrollView tabLabel="ios-school" style={styles.tabView}>
+            <ScrollView tabLabel="ios-school">
                 <ScrollableTabView renderTabBar={() => <TopBar />}>
                     <View tabLabel="Средни училишта">
-                        <Text>"Gi"</Text>
+                        <InfoCardLayout categoryName="Средни училишта" />
                     </View>
                     <View tabLabel="Универзитети">
-                        <Text>"Gо"</Text>
+                        <InfoCardLayout categoryName="Универзитети" />
                     </View>
                     <View tabLabel="Студентски домови">
-                        <Text>"Gu"</Text>
+                        <InfoCardLayout categoryName="Студентски домови" />
                     </View>
                     <View tabLabel="Библиотеки">
-                        <Text>"Gr"</Text>
+                        <InfoCardLayout categoryName="Библиотеки" />
                     </View>
                 </ScrollableTabView>
             </ScrollView>
@@ -87,13 +88,13 @@ class TabBar extends Component {
                     <Text>Попусти</Text>
                 </View>
             </ScrollView>
-            <ScrollView tabLabel="ios-information-circle" style={styles.tabView}>
+            <ScrollView tabLabel="ios-information-circle">
                 <ScrollableTabView renderTabBar={() => <TopBar />}>
                     <View tabLabel="Актуелно">
-                        <Text>"Gi"</Text>
+                        <InfoCardLayout categoryName="Актуелно" />
                     </View>
                     <View tabLabel="Проекти">
-                        <Text>"Gо"</Text>
+                        <InfoCardLayout categoryName="Проекти" />
                     </View>
                 </ScrollableTabView>
             </ScrollView>
