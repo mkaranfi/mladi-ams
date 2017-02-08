@@ -29,6 +29,24 @@ let styles = StyleSheet.create({
     greenBorder: {
         borderColor: '#AA7EBB'
     },
+    infoCard: {
+        flex: 1,
+        flexDirection: 'column',
+        borderTopWidth: 1,
+        borderTopColor: '#eaeae8',
+        borderBottomWidth: 2,
+        borderBottomColor: '#cfcfc2',
+        backgroundColor: '#fff',
+        marginBottom: 5,
+        padding: 5
+    },
+    infoCardRow: {
+        paddingHorizontal: 5
+    },
+    infoTitle: {
+        fontWeight: '700',
+        fontSize: 18
+    },
     mediumText: {
         fontSize: 12
     },
@@ -57,6 +75,6 @@ let styles = StyleSheet.create({
     },
     yellowBorder: {
         borderColor: '#e1c005'
-    },
+    }
 });
 export default styles;

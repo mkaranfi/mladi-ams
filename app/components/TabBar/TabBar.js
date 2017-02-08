@@ -3,12 +3,12 @@ import {
     StyleSheet,
     Text,
     View,
-    ScrollView,
     Navigator
 } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
 import CardLayout from '../Card/CardLayout';
+import InfoCardLayout from '../Card/InfoCardLayout';
 import CustomBar from './CustomBar';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
@@ -17,7 +17,7 @@ class TabBar extends Component {
         super(props);
     }
 
-   render() {
+    render() {
         return (
             <Navigator
                 renderScene={this.renderScene.bind(this)}
@@ -28,56 +28,57 @@ class TabBar extends Component {
     renderScene(route, navigator) {
         return <ScrollableTabView
             tabBarPosition="top"
-            style={{marginTop: 10,}}
+            style={{marginTop: 10}}
             initialPage={0}
             renderTabBar={() => <CustomBar />}
         >
             <View tabLabel="ios-paper" style={{flex: 1}}>
                 <CardLayout categoryName={this.props.categories}/>
                 <ActionButton buttonColor="rgba(174,198,207,1)">
-                    <ActionButton.Item buttonColor='#9b59b6' title="Пребарај" onPress={() => console.log("filter tapped!")}>
-                        <Icon name="md-search" style={styles.actionButtonIcon} />
+                    <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
+                                       onPress={() => console.log("filter tapped!")}>
+                        <Icon name="md-search" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
-                    <ActionButton.Item 
-                        buttonColor='#3498db' 
-                        title="Филтер" 
+                    <ActionButton.Item
+                        buttonColor='#3498db'
+                        title="Филтер"
                         onPress={() => {
                             this.props.navigator.push({
                                 name: 'CategorySelection'
                             })
                         }}>
-                        <Icon name="md-options" style={styles.actionButtonIcon} />
+                        <Icon name="md-options" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
                     <ActionButton.Item buttonColor='#1abc9c' title="Зачувани" onPress={() => {}}>
-                        <Icon name="md-checkmark" style={styles.actionButtonIcon} />
+                        <Icon name="md-checkmark" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
                 </ActionButton>
             </View>
-            <View tabLabel="ios-people" style={styles.tabView}>
-                <View style={styles.card}>
-                    <Text>Организации</Text>
-                </View>
+            <View tabLabel="ios-people" style={{flex: 1}}>
+                <InfoCardLayout categoryName="Студентска организација"/>
+                {/*<InfoCardLayout categoryName="Организација"/>*/}
                 <ActionButton buttonColor="rgba(174,198,207,1)">
-                    <ActionButton.Item buttonColor='#9b59b6' title="Пребарај" onPress={() => console.log("filter tapped!")}>
-                        <Icon name="md-search" style={styles.actionButtonIcon} />
+                    <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
+                                       onPress={() => console.log("filter tapped!")}>
+                        <Icon name="md-search" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
                     <ActionButton.Item buttonColor='#3498db' title="Студентски организации" onPress={() => {}}>
-                        <Icon name="md-create" style={styles.actionButtonIcon} />
+                        <Icon name="md-create" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
                     <ActionButton.Item buttonColor='#1abc9c' title="Невладини организации" onPress={() => {}}>
-                        <Icon name="md-checkmark" style={styles.actionButtonIcon} />
+                        <Icon name="md-checkmark" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
                 </ActionButton>
             </View>
-            <View tabLabel="ios-school" style={styles.tabView}>
-                <View style={styles.card}>
-                    <Text>Училишта</Text>
-                </View>
+            <View tabLabel="ios-school" style={{flex: 1}}>
+                <InfoCardLayout categoryName="Библиотеки"/>
+                {/*<InfoCardLayout categoryName="Средни училишта"/>*/}
+                {/*<InfoCardLayout categoryName="Универзитети"/>*/}
+                {/*<InfoCardLayout categoryName="Студентски домови"/>*/}
             </View>
-            <View tabLabel="ios-information-circle" style={styles.tabView}>
-                <View style={styles.card}>
-                    <Text>Актуелно</Text>
-                </View>
+            <View tabLabel="ios-information-circle" style={{flex: 1}}>
+                <InfoCardLayout categoryName="Актуелно"/>
+                {/*<InfoCardLayout categoryName="Проекти"/>*/}
             </View>
         </ScrollableTabView>;
     }
