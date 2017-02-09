@@ -39,9 +39,27 @@ class Card extends Component {
 
     render() {
         message = this.parseTimeMessage(this.props.date);
+        let borderBottomColor = '';
+        switch (this.props.type) {
+            case 'Internship':
+                borderBottomColor = 'orangeBorder';
+                break;
+            case 'Job':
+                borderBottomColor = 'greenBorder';
+                break;
+            case 'Seminar':
+                borderBottomColor = 'yellowBorder';
+                break;
+            case 'Conference':
+                borderBottomColor = 'redBorder';
+                break;
+            default:
+                borderBottomColor = 'blueBorder';
+                break;
+        }
         return (
             <TouchableHighlight onPress={()=>this._onPressButton(this.props.url)}>
-                <View style={styles.card} ref={component => this._root = component} {...this.props}>
+                <View style={[styles.card, styles[borderBottomColor]]} ref={component => this._root = component} {...this.props}>
                     <View style={styles.cardRow}>
                         <Text style={[styles.smallText, styles.topText]}>{this.props.site} | {message}</Text>
                     </View>

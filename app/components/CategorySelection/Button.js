@@ -12,7 +12,7 @@ class Button extends Component {
                 style={styles.touchable}
                 onPress={this.props.onPress}>
                 <View>
-                    <Text style={styles.saveButton}>Зачувај</Text>
+                    <Text style={styles.saveButton}>ЗАЧУВАЈ</Text>
                 </View>
             </TouchableHighlight>
         );

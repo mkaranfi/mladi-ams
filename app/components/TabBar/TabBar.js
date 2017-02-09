@@ -16,7 +16,7 @@ class TabBar extends Component {
         super(props);
     }
 
-    render() {
+   render() {
         return (
             <Navigator
                 renderScene={this.renderScene.bind(this)}
@@ -31,30 +31,9 @@ class TabBar extends Component {
             initialPage={0}
             renderTabBar={() => <CustomBar />}
         >
-            <ScrollView tabLabel="ios-paper">
-                <ScrollableTabView renderTabBar={() => <TopBar />}>
-                    {this.props.categories.includes('СТИПЕНДИИ') &&
-                    <View tabLabel="Стипендии">
-                        <CardLayout categoryName="СТИПЕНДИИ"/>
-                    </View>}
-                    {this.props.categories.includes('ПРАКСИ') &&
-                    <View tabLabel="Пракси">
-                        <CardLayout categoryName="ПРАКСИ"/>
-                    </View>}
-                    {this.props.categories.includes('РАБОТА') &&
-                    <View tabLabel="Вработувања">
-                        <CardLayout categoryName="РАБОТА"/>
-                    </View>}
-                    {this.props.categories.includes('СЕМИНАРИ') &&
-                    <View tabLabel="Семинари">
-                        <CardLayout categoryName="СЕМИНАРИ"/>
-                    </View>}
-                    {this.props.categories.includes('КОНФЕРЕНЦИИ') &&
-                    <View tabLabel="Конференции">
-                        <CardLayout categoryName="КОНФЕРЕНЦИИ"/>
-                    </View>}
-                </ScrollableTabView>
-            </ScrollView>
+            <View tabLabel="ios-paper" style={{flex: 1}}>
+                <CardLayout categoryName={this.props.categories}/>
+            </View>
             <View tabLabel="ios-people" style={styles.tabView}>
                 <View style={styles.card}>
                     <Text>Организации</Text>
