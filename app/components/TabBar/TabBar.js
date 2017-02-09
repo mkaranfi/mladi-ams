@@ -9,6 +9,8 @@ import {
 import ActionButton from 'react-native-action-button';
 import CardLayout from '../Card/CardLayout';
 import InfoCardLayout from '../Card/InfoCardLayout';
+import ArticleCardLayout from '../Card/ArticleCardLayout';
+import TopBar from '../SubBar/TopBar';
 import CustomBar from './CustomBar';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
@@ -77,8 +79,8 @@ class TabBar extends Component {
                 {/*<InfoCardLayout categoryName="Студентски домови"/>*/}
             </View>
             <View tabLabel="ios-information-circle" style={{flex: 1}}>
-                <InfoCardLayout categoryName="Актуелно"/>
-                {/*<InfoCardLayout categoryName="Проекти"/>*/}
+                <ArticleCardLayout categoryName="Актуелно"/>
+                {/*<ArticleCardLayout categoryName="Проекти" />*/}
             </View>
         </ScrollableTabView>;
     }
