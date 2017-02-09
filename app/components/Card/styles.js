@@ -4,6 +4,12 @@
 import {StyleSheet} from 'react-native';
 
 let styles = StyleSheet.create({
+    articleCardRow: {
+        paddingHorizontal: 5
+    },
+    articleCard: {
+        padding: 5
+    },
     card: {
         flex: 1,
         flexDirection: 'column',
@@ -16,8 +22,7 @@ let styles = StyleSheet.create({
         padding: 10
     },
     cardRow: {
-        paddingLeft: 15,
-        paddingRight: 15
+        paddingHorizontal: 15
     },
     container: {
         flex: 1,
@@ -53,11 +58,24 @@ let styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    thumbnail: {
+        width: 100,
+        height: 70,
+        marginRight: 5,
+        marginTop: 5,
+        flex: 2
+    },
     title: {
         color: '#444',
-        fontSize: 20,
-        marginTop: 5,
-        marginBottom: 7
+        fontSize: 15,
+        flex: 3
+    },
+    titleImage: {
+        alignItems: 'flex-start',
+        flexDirection:'row',
+        flex: 1,
+        marginBottom: 7,
+        marginTop: 5
     },
     topText: {
         fontWeight: 'bold'

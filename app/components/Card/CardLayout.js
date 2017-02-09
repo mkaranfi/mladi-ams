@@ -119,7 +119,7 @@ class CardLayout extends Component {
             return (<Card {...this.props} title={title} site={source} date={date}
                           description={rowData.Description} url={rowData.Link}/>);
         }
-        return (<Text>jaja</Text>);
+        return (<Text></Text>);
     }
 
 }

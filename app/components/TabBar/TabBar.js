@@ -9,6 +9,7 @@ import {
 
 import CardLayout from '../Card/CardLayout';
 import InfoCardLayout from '../Card/InfoCardLayout';
+import ArticleCardLayout from '../Card/ArticleCardLayout';
 import TopBar from '../SubBar/TopBar';
 import CustomBar from './CustomBar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
@@ -91,10 +92,10 @@ class TabBar extends Component {
             <ScrollView tabLabel="ios-information-circle">
                 <ScrollableTabView renderTabBar={() => <TopBar />}>
                     <View tabLabel="Актуелно">
-                        <InfoCardLayout categoryName="Актуелно" />
+                        <ArticleCardLayout categoryName="Актуелно" />
                     </View>
                     <View tabLabel="Проекти">
-                        <InfoCardLayout categoryName="Проекти" />
+                        <ArticleCardLayout categoryName="Проекти" />
                     </View>
                 </ScrollableTabView>
             </ScrollView>
