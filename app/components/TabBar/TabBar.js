@@ -3,24 +3,25 @@ import {
     StyleSheet,
     Text,
     View,
-    Navigator
+    Navigator,
+    TouchableNativeFeedback
 } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
 import CardLayout from '../Card/CardLayout';
 import InfoCardLayout from '../Card/InfoCardLayout';
 import ArticleCardLayout from '../Card/ArticleCardLayout';
-import TopBar from '../SubBar/TopBar';
 import CustomBar from './CustomBar';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import styles from './styles';
 class TabBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            people: 0,
-            school: 0,
-            information: 0
+            organizations: 0,
+            schools: 0,
+            articles: 0
         }
     }
 
@@ -32,25 +33,28 @@ class TabBar extends Component {
         )
     }
 
-    _onPressPeople(id) {
-        this.setState({people: id});
-    }
-
-    _onPressSchool(id) {
-        this.setState({school: id});
-    }
-
-    _onPressInformation(id) {
-        this.setState({information: id});
+    _onPress(id, tabName) {
+        switch (tabName) {
+            case 'organizations':
+                this.setState({organizations: id});
+                break;
+            case 'schools':
+                this.setState({schools: id});
+                break;
+            default:
+                this.setState({articles: id});
+                break;
+        }
     }
 
     renderScene(route, navigator) {
         return <ScrollableTabView
-            tabBarPosition="top"
+            tabBarPosition="bottom"
             style={{marginTop: 10}}
             initialPage={0}
             renderTabBar={() => <CustomBar />}
         >
+
             <View tabLabel="ios-paper" style={{flex: 1}}>
                 <CardLayout categoryName={this.props.categories}/>
                 <ActionButton buttonColor="rgba(174,198,207,1)">
@@ -60,112 +64,132 @@ class TabBar extends Component {
                     </ActionButton.Item>
                     <ActionButton.Item
                         buttonColor='#3498db'
-                        title="Филтер"
+                        title="Категории"
                         onPress={() => {
                             this.props.navigator.push({
                                 name: 'CategorySelection'
                             })
                         }}>
-                        <Icon name="md-options" style={styles.actionButtonIcon}/>
+                        <Icon name="md-settings" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#1abc9c' title="Зачувани" onPress={() => {}}>
-                        <Icon name="md-checkmark" style={styles.actionButtonIcon}/>
+                    <ActionButton.Item buttonColor='#1abc9c' title="Зачувани" onPress={() => {
+                    }}>
+                        <Icon name="md-star" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
                 </ActionButton>
             </View>
+
             <View tabLabel="ios-people" style={{flex: 1}}>
-                {this.state.people === 0 && <InfoCardLayout categoryName="Студентска организација"/>}
-                {this.state.people === 1 && <InfoCardLayout categoryName="Организација"/>}
+                <View style={styles.buttonContainer}>
+                    <TouchableNativeFeedback
+                        onPress={() => this._onPress(0, 'organizations')}
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={[styles.categoryButton,
+                            this.state.organizations === 0 ? styles.darkBackground : styles.lightBackgroung]}>
+                            <Text style={styles.categoryButtonText}>СТУДЕНТСКИ ОРГАНИЗАЦИИ</Text>
+                        </View>
+                    </TouchableNativeFeedback>
+                    <TouchableNativeFeedback
+                        onPress={() => this._onPress(1, 'organizations')}
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={[styles.categoryButton,
+                            this.state.organizations === 1 ? styles.darkBackground : styles.lightBackgroung]}>
+                            <Text style={styles.categoryButtonText}>НЕВЛАДИНИ ОРГАНИЗАЦИИ</Text>
+                        </View>
+                    </TouchableNativeFeedback>
+                </View>
+                {this.state.organizations === 0 && <InfoCardLayout categoryName="Студентска организација"/>}
+                {this.state.organizations === 1 && <InfoCardLayout categoryName="Организација"/>}
                 <ActionButton buttonColor="rgba(174,198,207,1)">
                     <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
                                        onPress={() => console.log("filter tapped!")}>
                         <Icon name="md-search" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Студентски организации"
-                                       onPress={()=> this._onPressPeople(0)}>
-                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Невладини организации"
-                                       onPress={()=> this._onPressPeople(1)}>
-                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
                 </ActionButton>
             </View>
+
             <View tabLabel="ios-school" style={{flex: 1}}>
-                {this.state.school === 0 && <InfoCardLayout categoryName="Библиотеки"/>}
-                {this.state.school === 1 && <InfoCardLayout categoryName="Средни училишта"/>}
-                {this.state.school === 2 && <InfoCardLayout categoryName="Универзитети"/>}
-                {this.state.school === 3 && <InfoCardLayout categoryName="Студентски домови"/>}
+                <View style={styles.buttonContainer}>
+                    <TouchableNativeFeedback
+                        onPress={() => this._onPress(0, 'schools')}
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={[styles.categoryButton,
+                            this.state.schools === 0 ? styles.darkBackground : styles.lightBackgroung]}>
+                            <Text style={styles.categoryButtonText}>УНИВЕРЗИТЕТИ</Text>
+                        </View>
+                    </TouchableNativeFeedback>
 
+                    <TouchableNativeFeedback
+                        onPress={() => this._onPress(1, 'schools')}
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={[styles.categoryButton,
+                            this.state.schools === 1 ? styles.darkBackground : styles.lightBackgroung]}>
+                            <Text style={styles.categoryButtonText}>СРЕДНИ УЧИЛИШТА</Text>
+                        </View>
+                    </TouchableNativeFeedback>
+                    <TouchableNativeFeedback
+                        onPress={() => this._onPress(2, 'schools')}
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={[styles.categoryButton,
+                            this.state.schools === 2 ? styles.darkBackground : styles.lightBackgroung]}>
+                            <Text style={styles.categoryButtonText}>БИБЛИОТЕКИ</Text>
+                        </View>
+                    </TouchableNativeFeedback>
+                    <TouchableNativeFeedback
+                        onPress={() => this._onPress(3, 'schools')}
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={[styles.categoryButton,
+                            this.state.schools === 3 ? styles.darkBackground : styles.lightBackgroung]}>
+                            <Text style={styles.categoryButtonText}>СТУДЕНТСКИ ДОМОВИ</Text>
+                        </View>
+                    </TouchableNativeFeedback>
+                </View>
+                {this.state.schools === 0 && <InfoCardLayout categoryName="Библиотеки"/>}
+                {this.state.schools === 1 && <InfoCardLayout categoryName="Средни училишта"/>}
+                {this.state.schools === 2 && <InfoCardLayout categoryName="Универзитети"/>}
+                {this.state.schools === 3 && <InfoCardLayout categoryName="Студентски домови"/>}
                 <ActionButton buttonColor="rgba(174,198,207,1)">
                     <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
                                        onPress={() => console.log("filter tapped!")}>
                         <Icon name="md-search" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Библиотеки"
-                                       onPress={()=> this._onPressSchool(0)}>
-                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Средни училишта"
-                                       onPress={()=> this._onPressSchool(1)}>
-                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Универзитети"
-                                       onPress={()=> this._onPressSchool(2)}>
-                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Студентски домови"
-                                       onPress={()=> this._onPressSchool(3)}>
-                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
                 </ActionButton>
             </View>
+
             <View tabLabel="ios-information-circle" style={{flex: 1}}>
-                {this.state.information === 0 && <ArticleCardLayout categoryName="Актуелно"/>}
-                {this.state.information === 1 && <ArticleCardLayout categoryName="Проекти"/>}
+                <View style={styles.buttonContainer}>
+                    <TouchableNativeFeedback
+                        onPress={() => this._onPress(0, 'articles')}
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={[styles.categoryButton,
+                            this.state.articles === 0 ? styles.darkBackground : styles.lightBackgroung]}>
+                            <Text style={styles.categoryButtonText}>АКТУЕЛНО</Text>
+                        </View>
+                    </TouchableNativeFeedback>
+
+                    <TouchableNativeFeedback
+                        onPress={() => this._onPress(1, 'articles')}
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={[styles.categoryButton,
+                            this.state.articles === 1 ? styles.darkBackground : styles.lightBackgroung]}>
+                            <Text style={styles.categoryButtonText}>ПРОЕКТИ</Text>
+                        </View>
+                    </TouchableNativeFeedback>
+                </View>
+
+                {this.state.articles === 0 && <ArticleCardLayout categoryName="Актуелно"/>}
+                {this.state.articles === 1 && <ArticleCardLayout categoryName="Проекти"/>}
 
                 <ActionButton buttonColor="rgba(174,198,207,1)">
                     <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
                                        onPress={() => console.log("filter tapped!")}>
                         <Icon name="md-search" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Актуелно"
-                                       onPress={()=> this._onPressInformation(0)}>
-                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Проекти"
-                                       onPress={()=> this._onPressInformation(1)}>
-                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
                 </ActionButton>
             </View>
+
         </ScrollableTabView>;
     }
 }
 
 export default TabBar;
-
-const styles = StyleSheet.create({
-    tabView: {
-        flex: 1,
-        padding: 10,
-        backgroundColor: 'rgba(0,0,0,0.01)',
-    },
-    card: {
-        borderWidth: 1,
-        backgroundColor: '#fff',
-        borderColor: 'rgba(0,0,0,0.1)',
-        margin: 5,
-        height: 150,
-        padding: 15,
-        shadowColor: '#ccc',
-        shadowOffset: {width: 2, height: 2,},
-        shadowOpacity: 0.5,
-        shadowRadius: 3,
-    },
-    actionButtonIcon: {
-        fontSize: 20,
-        height: 22,
-        color: 'white',
-    },
-});

@@ -20,7 +20,7 @@ let styles = StyleSheet.create({
         flexDirection: 'column',
         borderTopWidth: 1,
         borderTopColor: '#eaeae8',
-        borderBottomWidth: 3,
+        borderBottomWidth: 2,
         backgroundColor: '#fff',
         marginBottom: 12,
         padding: 10
@@ -30,7 +30,7 @@ let styles = StyleSheet.create({
     },
     container: {
         flex: 1,
-        paddingTop: 22,
+        paddingTop: 12,
         backgroundColor: '#efefed'
     },
     greenBorder: {
