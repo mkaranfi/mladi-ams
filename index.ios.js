@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, {Component} from 'react';
 import {
     AppRegistry,
@@ -12,6 +6,8 @@ import {
     View
 } from 'react-native';
 
+import CardLayout from './app/components/Card/CardLayout';
+import TabBar from './app/components/TabBar/TabBar';
 import MyRouter from './app/components/route';
 
 export default class mladiams extends Component {
