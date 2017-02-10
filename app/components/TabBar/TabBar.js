@@ -17,6 +17,11 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 class TabBar extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            people: 0,
+            school: 0,
+            information: 0
+        }
     }
 
     render() {
@@ -25,6 +30,18 @@ class TabBar extends Component {
                 renderScene={this.renderScene.bind(this)}
             />
         )
+    }
+
+    _onPressPeople(id) {
+        this.setState({people: id});
+    }
+
+    _onPressSchool(id) {
+        this.setState({school: id});
+    }
+
+    _onPressInformation(id) {
+        this.setState({information: id});
     }
 
     renderScene(route, navigator) {
@@ -57,30 +74,70 @@ class TabBar extends Component {
                 </ActionButton>
             </View>
             <View tabLabel="ios-people" style={{flex: 1}}>
-                <InfoCardLayout categoryName="Студентска организација"/>
-                {/*<InfoCardLayout categoryName="Организација"/>*/}
+                {this.state.people === 0 && <InfoCardLayout categoryName="Студентска организација"/>}
+                {this.state.people === 1 && <InfoCardLayout categoryName="Организација"/>}
                 <ActionButton buttonColor="rgba(174,198,207,1)">
                     <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
                                        onPress={() => console.log("filter tapped!")}>
                         <Icon name="md-search" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Студентски организации" onPress={() => {}}>
-                        <Icon name="md-create" style={styles.actionButtonIcon}/>
+                    <ActionButton.Item buttonColor='#3498db' title="Студентски организации"
+                                       onPress={()=> this._onPressPeople(0)}>
+                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#1abc9c' title="Невладини организации" onPress={() => {}}>
-                        <Icon name="md-checkmark" style={styles.actionButtonIcon}/>
+                    <ActionButton.Item buttonColor='#3498db' title="Невладини организации"
+                                       onPress={()=> this._onPressPeople(1)}>
+                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
                     </ActionButton.Item>
                 </ActionButton>
             </View>
             <View tabLabel="ios-school" style={{flex: 1}}>
-                <InfoCardLayout categoryName="Библиотеки"/>
-                {/*<InfoCardLayout categoryName="Средни училишта"/>*/}
-                {/*<InfoCardLayout categoryName="Универзитети"/>*/}
-                {/*<InfoCardLayout categoryName="Студентски домови"/>*/}
+                {this.state.school === 0 && <InfoCardLayout categoryName="Библиотеки"/>}
+                {this.state.school === 1 && <InfoCardLayout categoryName="Средни училишта"/>}
+                {this.state.school === 2 && <InfoCardLayout categoryName="Универзитети"/>}
+                {this.state.school === 3 && <InfoCardLayout categoryName="Студентски домови"/>}
+
+                <ActionButton buttonColor="rgba(174,198,207,1)">
+                    <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
+                                       onPress={() => console.log("filter tapped!")}>
+                        <Icon name="md-search" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#3498db' title="Библиотеки"
+                                       onPress={()=> this._onPressSchool(0)}>
+                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#3498db' title="Средни училишта"
+                                       onPress={()=> this._onPressSchool(1)}>
+                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#3498db' title="Универзитети"
+                                       onPress={()=> this._onPressSchool(2)}>
+                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#3498db' title="Студентски домови"
+                                       onPress={()=> this._onPressSchool(3)}>
+                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                </ActionButton>
             </View>
             <View tabLabel="ios-information-circle" style={{flex: 1}}>
-                <ArticleCardLayout categoryName="Актуелно"/>
-                {/*<ArticleCardLayout categoryName="Проекти" />*/}
+                {this.state.information === 0 && <ArticleCardLayout categoryName="Актуелно"/>}
+                {this.state.information === 1 && <ArticleCardLayout categoryName="Проекти"/>}
+
+                <ActionButton buttonColor="rgba(174,198,207,1)">
+                    <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
+                                       onPress={() => console.log("filter tapped!")}>
+                        <Icon name="md-search" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#3498db' title="Актуелно"
+                                       onPress={()=> this._onPressInformation(0)}>
+                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#3498db' title="Проекти"
+                                       onPress={()=> this._onPressInformation(1)}>
+                        <Icon name="md-eye" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                </ActionButton>
             </View>
         </ScrollableTabView>;
     }

@@ -8,7 +8,9 @@ let styles = StyleSheet.create({
         paddingHorizontal: 5
     },
     articleCard: {
-        padding: 5
+        padding: 5,
+        borderBottomWidth: 2,
+        borderBottomColor: '#cfcfc2'
     },
     blueBorder: {
         borderColor: '#4CA9DB'
