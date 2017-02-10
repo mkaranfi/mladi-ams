@@ -98,6 +98,9 @@ class CardLayout extends Component {
     }
 
     componentWillMount() {
+        completeData = [];
+        counter = 0;
+        categoryAPIs = [];
         let thisClassScoped = this;
         this.getCategoryAPI();
         categoryAPIs.forEach(function (category) {
