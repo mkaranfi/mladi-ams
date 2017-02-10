@@ -9,10 +9,16 @@ import CategorySelection from './CategorySelection/CategorySelection';
 import TabBar from './TabBar/TabBar';
 
 class MyRouter extends Component {
+
+    configureScene() {
+        return Navigator.SceneConfigs.FloatFromBottom;
+    }
+
     render() {
         return (
             <Navigator
                 initialRoute={{name: 'CategorySelection'}}
+                configureScene={()=> {return Navigator.SceneConfigs.FloatFromBottom}}
                 renderScene={ this.renderScene.bind(this) }/>
         );
     }
