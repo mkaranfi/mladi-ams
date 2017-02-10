@@ -1,7 +1,3 @@
-/**
- * Created by student on 1/26/17.
- */
-
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
@@ -11,7 +7,7 @@ class Category extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pressStatus: false
+            pressStatus: this.props.isSelected
         };
     }
 
