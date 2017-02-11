@@ -73,7 +73,7 @@ class ArticleCardLayout extends Component {
             let date = rowData.Date;
 
             return (<ArticleCard {...this.props} title={title} date={date}
-                                 description={rowData.Text} image={rowData.Thumbnail} />);
+                                 description={rowData.Text} image={rowData.Thumbnail} text={rowData.Text} />);
         }
         return (<Text></Text>);
     }

@@ -2,7 +2,11 @@
  * Created by Mile on 2/9/2017.
  */
 import React, {Component} from 'react';
-import {View, Text, TouchableHighlight, Image} from 'react-native';
+import {View,
+        Text, 
+        TouchableHighlight, 
+        WebView,
+        Image} from 'react-native';
 
 import styles from './styles';
 
@@ -33,6 +37,10 @@ class ArticleCard extends Component {
         return "пред " + message;
     }
 
+    _onPress() {
+        alert(this.props.text);
+    }
+
 
     render() {
         message = this.parseTimeMessage(this.props.date);
@@ -40,6 +48,7 @@ class ArticleCard extends Component {
         let description = this.props.Text;
         let imgSrc = this.props.image;
         return (
+            <TouchableHighlight onPress={this._onPress.bind(this)}>
                 <View style={[styles.card, styles.articleCard]} ref={component => this._root = component} {...this.props}>
                     <View style={styles.articleCardRow}>
                         <Text style={[styles.mediumText, styles.topText]}>{message}</Text>
@@ -52,6 +61,7 @@ class ArticleCard extends Component {
                         <Text numberOfLines={3} style={styles.mediumText}>{description}</Text>
                     </View>
                 </View>
+            </TouchableHighlight>
         );
     }
 }
