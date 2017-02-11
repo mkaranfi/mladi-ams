@@ -2,9 +2,10 @@
  * Created by Mile on 2/9/2017.
  */
 import React, {Component} from 'react';
-import {ListView, View, Text, AsyncStorage, ActivityIndicator} from 'react-native';
+import {ListView, Navigator, View, Text, AsyncStorage, ActivityIndicator} from 'react-native';
 
 import ArticleCard from './ArticleCard';
+import DetailView from '../DetailView/DetailView';
 import styles from './styles';
 const ARTICLES_API = 'http://mladi.ams.mk/eduservice.svc/GetArticles';
 
@@ -41,7 +42,7 @@ class ArticleCardLayout extends Component {
             scope.manageDataFromAPI(data, scope);
         })
             .catch((err) => {
-                AsyncStorage.getItem(category.keyword)
+                AsyncStorage.getItem(scope.props.categoryName)
                     .then((data) => JSON.parse(data))
                     .then((data) => {
                         data !== null ? scope.manageDataFromAPI(data, scope) :
@@ -56,28 +57,42 @@ class ArticleCardLayout extends Component {
         })
     }
 
-    render() {
-        return (
-            <View style={styles.container}>
-                {this.state.isLoading && <ActivityIndicator
-                    animating={this.state.isLoading}
-                    style={[styles.centering, {height: 80}]}
-                    size="large"
-                />}
-                {!this.state.isLoading && <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={this._renderRow}
-                />}
-            </View>
-        );
+    renderScene(route, navigator) {
+        if(route.name == 'DetailView') {
+            return <DetailView html={route.html} navigator={navigator} />
+        }
+        if(route.name == 'ArticleCard') {
+            return (
+                <View style={styles.container}>
+                    {this.state.isLoading && <ActivityIndicator
+                        animating={this.state.isLoading}
+                        style={[styles.centering, {height: 80}]}
+                        size="large"
+                    />}
+                    {!this.state.isLoading && <ListView
+                        dataSource={this.state.dataSource}
+                        renderRow={(data) => this._renderRow(data, navigator)}
+                    />}
+                </View>
+                );
+            }
+        
     }
 
-    _renderRow(rowData) {
+    render() {
+        return (
+           <Navigator
+                initialRoute={{name: 'ArticleCard'}}
+                configureScene={()=> {return Navigator.SceneConfigs.FloatFromBottom}}
+                renderScene={ this.renderScene.bind(this) }/>
+        );
+    }
+    _renderRow(rowData, navigator) {
         if (rowData !== null) {
+            console.log(navigator);
             let title = rowData.Title;
             let date = rowData.Date;
-
-            return (<ArticleCard {...this.props} title={title} date={date}
+            return (<ArticleCard {...this.props} nav={navigator} title={title} date={date}
                                  description={rowData.Text} image={rowData.Thumbnail} text={rowData.Text}/>);
         }
         return (<Text></Text>);

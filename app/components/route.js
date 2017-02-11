@@ -7,7 +7,7 @@ import {Navigator} from 'react-native';
 import CardLayout from './Card/CardLayout';
 import CategorySelection from './CategorySelection/CategorySelection';
 import TabBar from './TabBar/TabBar';
-
+import DetailView from './DetailView/DetailView';
 class MyRouter extends Component {
 
     configureScene() {
@@ -32,6 +32,9 @@ class MyRouter extends Component {
         }
         if(route.name == 'TabBar') {
             return <TabBar categories={route.categories} navigator={navigator} />
+        }
+        if(route.name == 'DetailView') {
+            return <DetailView html={route.html} navigator={navigator} />
         }
     }
 }

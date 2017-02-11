@@ -165,10 +165,8 @@ class TabBar extends Component {
                         </View>
                     </TouchableNativeFeedback>
                 </View>
-
-                {this.state.articles === 0 && <ArticleCardLayout categoryName="Актуелно"/>}
-                {this.state.articles === 1 && <ArticleCardLayout categoryName="Проекти"/>}
-
+                {this.state.articles === 0 && <ArticleCardLayout categoryName="Актуелно" />}
+                {this.state.articles === 1 && <ArticleCardLayout categoryName="Проекти" />}
                 <ActionButton buttonColor="rgba(174,198,207,1)">
                     <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
                                        onPress={() => console.log("filter tapped!")}>
