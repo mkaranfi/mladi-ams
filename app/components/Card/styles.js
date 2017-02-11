@@ -1,7 +1,7 @@
 /**
  * Created by Mile on 24-Jan-17.
  */
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 let styles = StyleSheet.create({
     articleCardRow: {
@@ -28,9 +28,15 @@ let styles = StyleSheet.create({
     cardRow: {
         paddingHorizontal: 15
     },
+    centering: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 8,
+    },
     container: {
         flex: 1,
-        paddingTop: 12,
+        paddingTop: 5,
         backgroundColor: '#efefed'
     },
     greenBorder: {
@@ -85,7 +91,7 @@ let styles = StyleSheet.create({
     },
     titleImage: {
         alignItems: 'flex-start',
-        flexDirection:'row',
+        flexDirection: 'row',
         flex: 1,
         marginBottom: 7,
         marginTop: 5

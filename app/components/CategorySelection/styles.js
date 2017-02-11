@@ -2,7 +2,7 @@
  * Created by student on 1/26/17.
  */
 
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 let styles = StyleSheet.create({
     blueBorder: {
@@ -13,18 +13,30 @@ let styles = StyleSheet.create({
         backgroundColor: '#4CA9DB'
     },
     category: {
+        height: 100,
         width: 100,
-        height: 120,
-        borderRadius: 10,
+        borderRadius: 50,
         borderWidth: 2,
         justifyContent: 'center'
+    },
+    row1: {
+        flex: 0.8,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'flex-end'
+    },
+    row2: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
     },
     categoriesLayout: {
         flex: 1,
         flexWrap: 'wrap',
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
-        margin: 10
+        justifyContent: 'flex-start'
     },
     categoryLayout: {
         padding: 5
@@ -87,8 +99,7 @@ let styles = StyleSheet.create({
     },
     subText: {
         fontSize: 16,
-        paddingLeft: 60,
-        paddingRight: 60,
+        paddingHorizontal: 60,
         textAlign: 'center',
         fontFamily: 'Exo2-ExtraLight'
     },

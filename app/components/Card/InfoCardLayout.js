@@ -2,7 +2,7 @@
  * Created by Mile on 2/8/2017.
  */
 import React, {Component} from 'react';
-import {ListView, View, Text, AsyncStorage} from 'react-native';
+import {ListView, View, Text, AsyncStorage, ActivityIndicator} from 'react-native';
 
 import InfoCard from './InfoCard';
 import styles from './styles';
@@ -128,10 +128,15 @@ class InfoCardLayout extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ListView
+                {this.state.isLoading && <ActivityIndicator
+                    animating={this.state.isLoading}
+                    style={[styles.centering, {height: 80}]}
+                    size="large"
+                />}
+                {!this.state.isLoading && <ListView
                     dataSource={this.state.dataSource}
                     renderRow={this._renderRow}
-                />
+                />}
             </View>
         );
     }

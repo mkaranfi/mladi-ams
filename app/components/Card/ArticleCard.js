@@ -44,7 +44,6 @@ class ArticleCard extends Component {
 
     render() {
         message = this.parseTimeMessage(this.props.date);
-        // var root = HTMLParser.parse(this.props.description).text;
         let description = this.props.Text;
         let imgSrc = this.props.image;
         return (

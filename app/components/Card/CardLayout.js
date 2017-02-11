@@ -1,8 +1,8 @@
 /**
  * Created by Mile on 24-Jan-17.
  */
-import React, { Component } from 'react';
-import { ListView, View, Text, AsyncStorage } from 'react-native';
+import React, {Component} from 'react';
+import {ListView, View, Text, AsyncStorage, ActivityIndicator} from 'react-native';
 
 import Card from './Card';
 var moment = require('moment');
@@ -23,10 +23,11 @@ var completeData = [];
 class CardLayout extends Component {
     constructor(props) {
         super(props);
-        this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        let loading = props.categoryName.length === 0 ? false : true;
         this.state = {
             dataSource: this.ds.cloneWithRows(this.ds),
-            isLoading: true
+            isLoading: loading
         };
     }
 
@@ -76,7 +77,7 @@ class CardLayout extends Component {
 
     manageDataFromAPI(data, category, scope) {
         data = scope.filterThroughArray(data, category.type, category.keyword);
-        for(var i = 0; i < data.length; i++) {
+        for (var i = 0; i < data.length; i++) {
             data[i]['type'] = category.keyword;
             console.log(Object.getOwnPropertyNames(data[i]));
         }
@@ -93,7 +94,7 @@ class CardLayout extends Component {
         }
         scope.setState({
             dataSource: scope.ds.cloneWithRows(completeData),
-            isLoading: true
+            isLoading: false
         });
     }
 
@@ -133,10 +134,22 @@ class CardLayout extends Component {
     render() {
         return (
             <View style={styles.container}>
+                {this.state.isLoading && <ActivityIndicator
+                    animating={this.state.isLoading}
+                    style={[styles.centering, {height: 80}]}
+                    size="large"
+                />}
+                {!this.state.isLoading && this.props.categoryName.length !== 0 &&
                 <ListView
                     dataSource={this.state.dataSource}
                     renderRow={this._renderRow}
-                />
+                />}
+                {this.props.categoryName.length === 0 &&
+                <View style={{flex: 1, marginHorizontal: 30, justifyContent: 'center', alignItems: 'center'}}>
+                    <Text style={{fontSize: 18, textAlign: 'center'}}>Овде нема ништо.
+                        Одбери барем една категорија за која сакаш да се информираш.</Text>
+                </View>}
+
             </View>
         );
     }
@@ -148,7 +161,7 @@ class CardLayout extends Component {
             let date = rowData.CrawlDate === undefined ? rowData.Inserted : rowData.CrawlDate;
 
             return (<Card {...this.props} type={rowData.type} title={title} site={source} date={date}
-                description={rowData.Description} url={rowData.Link} />);
+                          description={rowData.Description} url={rowData.Link}/>);
         }
         return (<Text></Text>);
     }

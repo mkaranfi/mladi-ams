@@ -2,7 +2,7 @@
  * Created by Mile on 2/9/2017.
  */
 import React, {Component} from 'react';
-import {ListView, View, Text, AsyncStorage} from 'react-native';
+import {ListView, View, Text, AsyncStorage, ActivityIndicator} from 'react-native';
 
 import ArticleCard from './ArticleCard';
 import styles from './styles';
@@ -59,10 +59,15 @@ class ArticleCardLayout extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ListView
+                {this.state.isLoading && <ActivityIndicator
+                    animating={this.state.isLoading}
+                    style={[styles.centering, {height: 80}]}
+                    size="large"
+                />}
+                {!this.state.isLoading && <ListView
                     dataSource={this.state.dataSource}
                     renderRow={this._renderRow}
-                />
+                />}
             </View>
         );
     }
@@ -73,7 +78,7 @@ class ArticleCardLayout extends Component {
             let date = rowData.Date;
 
             return (<ArticleCard {...this.props} title={title} date={date}
-                                 description={rowData.Text} image={rowData.Thumbnail} text={rowData.Text} />);
+                                 description={rowData.Text} image={rowData.Thumbnail} text={rowData.Text}/>);
         }
         return (<Text></Text>);
     }

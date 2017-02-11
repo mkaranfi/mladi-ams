@@ -82,35 +82,6 @@ class TabBar extends Component {
             <View tabLabel="ios-people" style={{flex: 1}}>
                 <View style={styles.buttonContainer}>
                     <TouchableNativeFeedback
-                        onPress={() => this._onPress(0, 'organizations')}
-                        background={TouchableNativeFeedback.SelectableBackground()}>
-                        <View style={[styles.categoryButton,
-                            this.state.organizations === 0 ? styles.darkBackground : styles.lightBackgroung]}>
-                            <Text style={styles.categoryButtonText}>СТУДЕНТСКИ ОРГАНИЗАЦИИ</Text>
-                        </View>
-                    </TouchableNativeFeedback>
-                    <TouchableNativeFeedback
-                        onPress={() => this._onPress(1, 'organizations')}
-                        background={TouchableNativeFeedback.SelectableBackground()}>
-                        <View style={[styles.categoryButton,
-                            this.state.organizations === 1 ? styles.darkBackground : styles.lightBackgroung]}>
-                            <Text style={styles.categoryButtonText}>НЕВЛАДИНИ ОРГАНИЗАЦИИ</Text>
-                        </View>
-                    </TouchableNativeFeedback>
-                </View>
-                {this.state.organizations === 0 && <InfoCardLayout categoryName="Студентска организација"/>}
-                {this.state.organizations === 1 && <InfoCardLayout categoryName="Организација"/>}
-                <ActionButton buttonColor="rgba(174,198,207,1)">
-                    <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
-                                       onPress={() => console.log("filter tapped!")}>
-                        <Icon name="md-search" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                </ActionButton>
-            </View>
-
-            <View tabLabel="ios-school" style={{flex: 1}}>
-                <View style={styles.buttonContainer}>
-                    <TouchableNativeFeedback
                         onPress={() => this._onPress(0, 'schools')}
                         background={TouchableNativeFeedback.SelectableBackground()}>
                         <View style={[styles.categoryButton,
@@ -143,11 +114,29 @@ class TabBar extends Component {
                             <Text style={styles.categoryButtonText}>СТУДЕНТСКИ ДОМОВИ</Text>
                         </View>
                     </TouchableNativeFeedback>
+                    <TouchableNativeFeedback
+                        onPress={() => this._onPress(4, 'schools')}
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={[styles.categoryButton,
+                            this.state.schools === 4 ? styles.darkBackground : styles.lightBackgroung]}>
+                            <Text style={styles.categoryButtonText}>СТУДЕНТСКИ ОРГАНИЗАЦИИ</Text>
+                        </View>
+                    </TouchableNativeFeedback>
+                    <TouchableNativeFeedback
+                        onPress={() => this._onPress(5, 'schools')}
+                        background={TouchableNativeFeedback.SelectableBackground()}>
+                        <View style={[styles.categoryButton,
+                            this.state.schools === 5 ? styles.darkBackground : styles.lightBackgroung]}>
+                            <Text style={styles.categoryButtonText}>НЕВЛАДИНИ ОРГАНИЗАЦИИ</Text>
+                        </View>
+                    </TouchableNativeFeedback>
                 </View>
-                {this.state.schools === 0 && <InfoCardLayout categoryName="Библиотеки"/>}
+                {this.state.schools === 0 && <InfoCardLayout categoryName="Универзитети"/>}
                 {this.state.schools === 1 && <InfoCardLayout categoryName="Средни училишта"/>}
-                {this.state.schools === 2 && <InfoCardLayout categoryName="Универзитети"/>}
+                {this.state.schools === 2 && <InfoCardLayout categoryName="Библиотеки"/>}
                 {this.state.schools === 3 && <InfoCardLayout categoryName="Студентски домови"/>}
+                {this.state.schools === 4 && <InfoCardLayout categoryName="Студентска организација"/>}
+                {this.state.schools === 5 && <InfoCardLayout categoryName="Организација"/>}
                 <ActionButton buttonColor="rgba(174,198,207,1)">
                     <ActionButton.Item buttonColor='#9b59b6' title="Пребарај"
                                        onPress={() => console.log("filter tapped!")}>
