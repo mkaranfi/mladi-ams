@@ -5,25 +5,32 @@ import React, {Component} from 'react';
 import {View,
         Text, 
         TouchableHighlight,
-        Navigator, 
+        Navigator,
         Image} from 'react-native';
 
 import styles from './styles';
 import DetailView from '../DetailView/DetailView';
 var moment = require('moment');
 // var HTMLParser = require('fast-html-parser');
-var nav;
-var text;
+var classScope;
 class ArticleCard extends Component {
+
     constructor(props) {
         super(props);
-        nav = this.props.nav;
-        text = this.props.text;
+        classScope = this;
     }
 
     /*setNativeProps(nativeProps) {
         this._root.setNativeProps(nativeProps);
+
     }*/
+
+    _onPress(html) {
+        classScope.props.navigator.push({
+           name: 'DetailView',
+           html: html,
+        });
+    }
 
     parseTimeMessage(crawlDate) {
         let message = moment(crawlDate, 'DD.MM.YYYY HH:mm:ss').toNow(true).toString();
@@ -43,20 +50,12 @@ class ArticleCard extends Component {
         return "пред " + message;
     }
 
-    onPress() {
-        console.log(this.text);
-        nav.push({
-            name: 'DetailView',
-            html: text
-        });
-    }
-
     render() {
                 message = this.parseTimeMessage(this.props.date);
-            let description = this.props.Text;
+            let description = this.props.description;
             let imgSrc = this.props.image;
         return (
-                    <TouchableHighlight onPress={this.onPress.bind()}>
+                    <TouchableHighlight onPress={this._onPress.bind(this, description)}>
                          <View style={[styles.card, styles.articleCard]} ref={component => this._root = component} {...this.props}>
                             <View style={styles.articleCardRow}>
                                  <Text style={[styles.mediumText, styles.topText]}>{message}</Text>

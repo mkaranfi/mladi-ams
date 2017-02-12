@@ -2,7 +2,12 @@
  * Created by Mile on 2/9/2017.
  */
 import React, {Component} from 'react';
-import {ListView, Navigator, View, Text, AsyncStorage, ActivityIndicator} from 'react-native';
+import {ListView,
+        View,
+        Text,
+        AsyncStorage,
+        Navigator,
+        ActivityIndicator} from 'react-native';
 
 import ArticleCard from './ArticleCard';
 import DetailView from '../DetailView/DetailView';
@@ -12,6 +17,7 @@ const ARTICLES_API = 'http://mladi.ams.mk/eduservice.svc/GetArticles';
 class ArticleCardLayout extends Component {
     constructor(props) {
         super(props);
+        console.log(this.props);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             dataSource: this.ds.cloneWithRows(this.ds),
@@ -64,7 +70,7 @@ class ArticleCardLayout extends Component {
         }
         if(route.name == 'ArticleCard') {
             return (
-                <View style={styles.container}>
+                <View style={styles.container} navigator={navigator}>
                     {this.state.isLoading && <ActivityIndicator
                         animating={this.state.isLoading}
                         style={[styles.centering, {height: 80}]}
@@ -77,12 +83,16 @@ class ArticleCardLayout extends Component {
                 </View>
                 );
             }
-        
+    }
+
+    rowPressed(html) {
+        console.log(html);
+        console.log(this.props.navigator);
     }
 
     render() {
         return (
-           <Navigator
+            <Navigator
                 initialRoute={{name: 'ArticleCard'}}
                 configureScene={()=> {return Navigator.SceneConfigs.FloatFromBottom}}
                 renderScene={ this.renderScene.bind(this) }/>
@@ -90,11 +100,9 @@ class ArticleCardLayout extends Component {
     }
     _renderRow(rowData, navigator) {
         if (rowData !== null) {
-            console.log(navigator);
             let title = rowData.Title;
             let date = rowData.Date;
-            return (<ArticleCard {...this.props} nav={navigator} title={title} date={date}
-                                 description={rowData.Text} image={rowData.Thumbnail} text={rowData.Text}/>);
+            return (<ArticleCard {...this.props} title={title} date={date} description={rowData.Text} navigator={navigator} onPress={this.rowPressed.bind(this, rowData.Text)} image={rowData.Thumbnail} />);
         }
         return (<Text></Text>);
     }
