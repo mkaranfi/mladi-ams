@@ -115,11 +115,11 @@ class InfoCardLayout extends Component {
         return array.filter(function (item) {
             if (type === listingTypes.ORGANIZATION)
                 return item.Student === keyword;
-            if(type === listingTypes.UNIVERSITIES)
+            if (type === listingTypes.UNIVERSITIES)
                 return item.TypeID.includes(category.keyword1) || item.TypeID.includes(category.keyword2);
-            if(type === listingTypes.SCHOOLS)
+            if (type === listingTypes.SCHOOLS)
                 return item.TypeID === keyword;
-            if(type === listingTypes.ARTICLES)
+            if (type === listingTypes.ARTICLES)
                 return item.ArticleCategoryID === keyword;
             return true;
         })
@@ -142,20 +142,17 @@ class InfoCardLayout extends Component {
     }
 
     _renderRow(rowData) {
-        if(rowData !== null) {
-            let properties = {};
-            let name = rowData.Name;
-            properties['website'] = rowData.Website;
-            properties['email']  = rowData.Email;
-            properties['phone'] = rowData.Telephone;
-            properties['facebook'] = rowData.FB;
-            properties['twitter'] = rowData.TW;
-            properties['locationX'] = rowData.LocationX;
-            properties['locationY'] = rowData.LocationY;
+        let properties = {};
+        let name = rowData.Name;
+        properties['website'] = rowData.Website;
+        properties['email'] = rowData.Email;
+        properties['phone'] = rowData.Telephone;
+        properties['facebook'] = rowData.FB;
+        properties['twitter'] = rowData.TW;
+        properties['locationX'] = rowData.LocationX;
+        properties['locationY'] = rowData.LocationY;
 
-            return (<InfoCard title={name} properties={properties}/>);
-        }
-        return (<Text></Text>)
+        return (<InfoCard title={name} properties={properties}/>);
     }
 
 }

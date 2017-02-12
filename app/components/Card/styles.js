@@ -90,15 +90,15 @@ let styles = StyleSheet.create({
     },
     title: {
         color: '#444',
-        fontSize: 15,
-        flex: 3
+        fontSize: 16,
+        flex: 3,
+        paddingVertical: 2
     },
     titleImage: {
         alignItems: 'flex-start',
         flexDirection: 'row',
         flex: 1,
-        marginBottom: 7,
-        marginTop: 5
+        marginBottom: 3
     },
     topText: {
         fontWeight: 'bold'

@@ -2,12 +2,14 @@
  * Created by Mile on 2/9/2017.
  */
 import React, {Component} from 'react';
-import {ListView,
-        View,
-        Text,
-        AsyncStorage,
-        Navigator,
-        ActivityIndicator} from 'react-native';
+import {
+    ListView,
+    View,
+    Text,
+    AsyncStorage,
+    Navigator,
+    ActivityIndicator
+} from 'react-native';
 
 import ArticleCard from './ArticleCard';
 import DetailView from '../DetailView/DetailView';
@@ -34,7 +36,6 @@ class ArticleCardLayout extends Component {
 
     manageDataFromAPI(data, scope) {
         data = scope.filterThroughArray(data, scope);
-        data = data.reverse();
 
         scope.setState({
             dataSource: scope.ds.cloneWithRows(data),
@@ -65,10 +66,10 @@ class ArticleCardLayout extends Component {
     }
 
     renderScene(route, navigator) {
-        if(route.name == 'DetailView') {
-            return <DetailView html={route.html} navigator={navigator} />
+        if (route.name == 'DetailView') {
+            return <DetailView html={route.html} navigator={navigator}/>
         }
-        if(route.name == 'ArticleCard') {
+        if (route.name == 'ArticleCard') {
             return (
                 <View style={styles.container} navigator={navigator}>
                     {this.state.isLoading && <ActivityIndicator
@@ -81,8 +82,26 @@ class ArticleCardLayout extends Component {
                         renderRow={(data) => this._renderRow(data, navigator)}
                     />}
                 </View>
-                );
-            }
+            );
+        }
+    }
+
+    render() {
+        return (
+            <Navigator
+                initialRoute={{name: 'ArticleCard'}}
+                configureScene={() => {
+                    return Navigator.SceneConfigs.FloatFromBottom
+                }}
+                renderScene={ this.renderScene.bind(this) }/>
+        );
+    }
+
+    onPress() {
+        nav.push({
+            name: 'DetailView',
+            html: text
+        });
     }
 
     rowPressed(html) {
@@ -90,21 +109,11 @@ class ArticleCardLayout extends Component {
         console.log(this.props.navigator);
     }
 
-    render() {
-        return (
-            <Navigator
-                initialRoute={{name: 'ArticleCard'}}
-                configureScene={()=> {return Navigator.SceneConfigs.FloatFromBottom}}
-                renderScene={ this.renderScene.bind(this) }/>
-        );
-    }
     _renderRow(rowData, navigator) {
-        if (rowData !== null) {
-            let title = rowData.Title;
-            let date = rowData.Date;
-            return (<ArticleCard {...this.props} title={title} date={date} description={rowData.Text} navigator={navigator} onPress={this.rowPressed.bind(this, rowData.Text)} image={rowData.Thumbnail} />);
-        }
-        return (<Text></Text>);
+        let title = rowData.Title;
+        let date = rowData.Date;
+        return (<ArticleCard {...this.props} title={title} date={date} description={rowData.Text} navigator={navigator}
+                             onPress={this.rowPressed.bind(this, rowData.Text)} image={rowData.Thumbnail}/>);
     }
 
 }

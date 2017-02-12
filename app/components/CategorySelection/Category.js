@@ -28,8 +28,8 @@ class Category extends Component {
                 styleColorPressed = 'orangeFilled';
                 break;
             case 'РАБОТА':
-                styleColor = 'greenBorder';
-                styleColorPressed = 'greenFilled';
+                styleColor = 'purpleBorder';
+                styleColorPressed = 'purpleFilled';
                 break;
             case 'СЕМИНАРИ':
                 styleColor = 'yellowBorder';

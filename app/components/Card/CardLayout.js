@@ -155,15 +155,13 @@ class CardLayout extends Component {
     }
 
     _renderRow(rowData) {
-        if (rowData !== null) {
-            let title = rowData.Title === undefined ? rowData.Name : rowData.Title;
-            let source = rowData.EduSiteName === undefined ? rowData.EduSiteID : rowData.EduSiteName;
-            let date = rowData.CrawlDate === undefined ? rowData.Inserted : rowData.CrawlDate;
+        let title = rowData.Title === undefined ? rowData.Name : rowData.Title;
+        let source = rowData.EduSiteName === undefined ? rowData.EduSiteID : rowData.EduSiteName;
+        let date = rowData.CrawlDate === undefined ? rowData.Inserted : rowData.CrawlDate;
 
-            return (<Card {...this.props} type={rowData.type} title={title} site={source} date={date}
-                          description={rowData.Description} url={rowData.Link}/>);
-        }
-        return (<Text></Text>);
+        return (<Card {...this.props} type={rowData.type} title={title} site={source} date={date}
+                      description={rowData.Description} url={rowData.Link}/>);
+
     }
 
 }

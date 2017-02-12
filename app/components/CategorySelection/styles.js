@@ -52,10 +52,10 @@ let styles = StyleSheet.create({
     darkText: {
         color: '#444',
     },
-    greenBorder: {
+    purpleBorder: {
         borderColor: '#AA7EBB'
     },
-    greenFilled: {
+    purpleFilled: {
         borderColor: '#AA7EBB',
         backgroundColor: '#AA7EBB'
     },
@@ -94,7 +94,7 @@ let styles = StyleSheet.create({
     },
     saveButton: {
         fontSize: 18,
-        color: '#444',
+        color: '#fff',
         textAlign: 'center'
     },
     subText: {
@@ -106,9 +106,9 @@ let styles = StyleSheet.create({
     touchable: {
         width: 180,
         height: 45,
-        backgroundColor: 'mediumaquamarine',
+        backgroundColor: '#4C9BFF',
         borderRadius: 180 / 2,
-        borderColor: 'mediumaquamarine',
+        elevation: 5,
         marginBottom: 10,
         justifyContent: 'center'
     },

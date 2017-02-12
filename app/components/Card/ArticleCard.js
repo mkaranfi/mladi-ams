@@ -2,11 +2,13 @@
  * Created by Mile on 2/9/2017.
  */
 import React, {Component} from 'react';
-import {View,
-        Text, 
-        TouchableHighlight,
-        Navigator,
-        Image} from 'react-native';
+import {
+    View,
+    Text,
+    TouchableHighlight,
+    Navigator,
+    Image
+} from 'react-native';
 
 import styles from './styles';
 import DetailView from '../DetailView/DetailView';
@@ -21,14 +23,14 @@ class ArticleCard extends Component {
     }
 
     /*setNativeProps(nativeProps) {
-        this._root.setNativeProps(nativeProps);
+     this._root.setNativeProps(nativeProps);
 
-    }*/
+     }*/
 
     _onPress(html) {
         classScope.props.navigator.push({
-           name: 'DetailView',
-           html: html,
+            name: 'DetailView',
+            html: html,
         });
     }
 
@@ -51,24 +53,22 @@ class ArticleCard extends Component {
     }
 
     render() {
-                message = this.parseTimeMessage(this.props.date);
-            let description = this.props.description;
-            let imgSrc = this.props.image;
+        message = this.parseTimeMessage(this.props.date);
+        let description = this.props.description;
+        let imgSrc = this.props.image;
         return (
-                    <TouchableHighlight onPress={this._onPress.bind(this, description)}>
-                         <View style={[styles.card, styles.articleCard]} ref={component => this._root = component} {...this.props}>
-                            <View style={styles.articleCardRow}>
-                                 <Text style={[styles.mediumText, styles.topText]}>{message}</Text>
-                             </View>
-                            <View style={[styles.articleCardRow, styles.titleImage]}>
-                                  {this.props.image !== '' && <Image source={{uri: imgSrc}} style={styles.thumbnail} />}
-                                   <Text  numberOfLines={4} style={styles.title}>{this.props.title}</Text>
-                            </View>
-                            <View style={styles.articleCardRow}>
-                                 <Text numberOfLines={3} style={styles.mediumText}>{description}</Text>
-                            </View>
-                        </View>
-                    </TouchableHighlight>
+            <TouchableHighlight onPress={this._onPress.bind(this, description)}>
+                <View style={[styles.card, styles.articleCard]}
+                      ref={component => this._root = component} {...this.props}>
+                    <View style={styles.articleCardRow}>
+                        <Text style={[styles.mediumText, styles.topText]}>{message}</Text>
+                    </View>
+                    <View style={[styles.articleCardRow, styles.titleImage]}>
+                        {this.props.image !== '' && <Image source={{uri: imgSrc}} style={styles.thumbnail}/>}
+                        <Text numberOfLines={4} style={styles.title}>{this.props.title}</Text>
+                    </View>
+                </View>
+            </TouchableHighlight>
         );
     }
 }
