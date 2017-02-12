@@ -79,7 +79,6 @@ class CardLayout extends Component {
         data = scope.filterThroughArray(data, category.type, category.keyword);
         for (var i = 0; i < data.length; i++) {
             data[i]['type'] = category.keyword;
-            console.log(Object.getOwnPropertyNames(data[i]));
         }
         completeData = completeData.concat(data);
         counter++;
@@ -91,11 +90,12 @@ class CardLayout extends Component {
                 let dateB = moment(date2, 'DD.MM.YYYY HH:mm:ss').toDate();
                 return dateB - dateA;
             });
+
+            scope.setState({
+                dataSource: scope.ds.cloneWithRows(completeData),
+                isLoading: false
+            });
         }
-        scope.setState({
-            dataSource: scope.ds.cloneWithRows(completeData),
-            isLoading: false
-        });
     }
 
     componentWillMount() {

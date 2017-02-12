@@ -28,6 +28,7 @@ class ArticleCardLayout extends Component {
 
     manageDataFromAPI(data, scope) {
         data = scope.filterThroughArray(data, scope);
+        data = data.reverse();
 
         scope.setState({
             dataSource: scope.ds.cloneWithRows(data),

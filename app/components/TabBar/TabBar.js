@@ -50,7 +50,6 @@ class TabBar extends Component {
     renderScene(route, navigator) {
         return <ScrollableTabView
             tabBarPosition="bottom"
-            style={{marginTop: 10}}
             initialPage={0}
             renderTabBar={() => <CustomBar />}
         >

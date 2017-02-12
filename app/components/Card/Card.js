@@ -38,23 +38,29 @@ class Card extends Component {
 
 
     render() {
-        message = this.parseTimeMessage(this.props.date);
+        let message = this.parseTimeMessage(this.props.date);
+        let type = '';
         let borderBottomColor = '';
         switch (this.props.type) {
             case 'Internship':
                 borderBottomColor = 'orangeBorder';
+                type = 'пракса';
                 break;
             case 'Job':
                 borderBottomColor = 'greenBorder';
+                type = 'вработување';
                 break;
             case 'Seminar':
                 borderBottomColor = 'yellowBorder';
+                type = 'семинар';
                 break;
             case 'Conference':
                 borderBottomColor = 'redBorder';
+                type = 'конференција';
                 break;
             default:
                 borderBottomColor = 'blueBorder';
+                type = 'стипендија';
                 break;
         }
         return (
@@ -62,7 +68,7 @@ class Card extends Component {
                 <View style={[styles.card, styles[borderBottomColor]]}
                       ref={component => this._root = component} {...this.props}>
                     <View style={styles.cardRow}>
-                        <Text style={[styles.smallText, styles.topText]}>{this.props.site} | {message}</Text>
+                        <Text style={[styles.smallText, styles.topText]}>{this.props.site} | {type} | {message}</Text>
                     </View>
                     <View style={styles.cardRow}>
                         <Text style={styles.title}>{this.props.title}</Text>

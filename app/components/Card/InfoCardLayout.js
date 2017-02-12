@@ -87,7 +87,7 @@ class InfoCardLayout extends Component {
 
     manageDataFromAPI(data, scope) {
         data = scope.filterThroughArray(data, category.type, category.keyword);
-
+        data = data.reverse();
         scope.setState({
             dataSource: scope.ds.cloneWithRows(data),
             isLoading: false
@@ -146,10 +146,12 @@ class InfoCardLayout extends Component {
             let properties = {};
             let name = rowData.Name;
             properties['website'] = rowData.Website;
-            properties['email'] = rowData.Email;
-            properties['telephone'] = rowData.Telephone;
+            properties['email']  = rowData.Email;
+            properties['phone'] = rowData.Telephone;
             properties['facebook'] = rowData.FB;
             properties['twitter'] = rowData.TW;
+            properties['locationX'] = rowData.LocationX;
+            properties['locationY'] = rowData.LocationY;
 
             return (<InfoCard title={name} properties={properties}/>);
         }

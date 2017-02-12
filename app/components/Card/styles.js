@@ -54,7 +54,11 @@ let styles = StyleSheet.create({
         padding: 5
     },
     infoCardRow: {
-        paddingHorizontal: 5
+        paddingHorizontal: 5,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start'
     },
     infoTitle: {
         fontWeight: '700',
@@ -98,6 +102,11 @@ let styles = StyleSheet.create({
     },
     topText: {
         fontWeight: 'bold'
+    },
+    websiteUrl: {
+        textDecorationLine: 'underline',
+        color: 'blue',
+        fontSize: 12
     },
     yellowBorder: {
         borderColor: '#e1c005'

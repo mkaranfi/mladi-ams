@@ -4,30 +4,30 @@ const styles = StyleSheet.create({
     actionButtonIcon: {
         fontSize: 20,
         height: 22,
-        color: 'white',
+        color: 'white'
     },
     buttonContainer: {
         backgroundColor: '#efefed',
         flexWrap: 'wrap',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'flex-start',
         flexDirection: 'row'
     },
     categoryButton: {
         margin: 3,
         borderWidth: 1,
-        borderColor: '#d4d4d4',
+        borderColor: '#d4d4d4'
     },
     categoryButtonText: {
         textAlign: 'center',
         margin: 5,
-        fontSize: 5.3 * PixelRatio.get(),
+        fontSize: 10,
         color: '#666',
         fontWeight: 'bold'
 
     },
     darkBackground: {
-        backgroundColor: '#d4d4d4',
+        backgroundColor: '#d4d4d4'
     },
     darkFont: {
         color: '#7d7b7b'

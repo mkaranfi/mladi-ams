@@ -21,7 +21,7 @@ class CategorySelection extends Component {
         this.setState({
             pressed: true
         });
-        this.props.navigator.push({
+        this.props.navigator.resetTo({
             name: 'TabBar',
             categories: selected
         })
