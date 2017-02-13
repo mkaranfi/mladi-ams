@@ -25,7 +25,8 @@ class ArticleCard extends Component {
     _onPress(html) {
         classScope.props.navigator.push({
             name: 'DetailView',
-            html: html
+            html: html,
+            title: this.props.title,
         });
     }
 

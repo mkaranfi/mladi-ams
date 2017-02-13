@@ -18,10 +18,11 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 import styles from './styles';
 var loadedCategories = [];
 var searchPressed = false;
-
+var thisClass;
 class TabBar extends Component {
     constructor(props) {
         super(props);
+        thisClass = this;
         this.state = {
             organizations: 0,
             schools: 0,
@@ -133,9 +134,9 @@ class TabBar extends Component {
                     </TouchableNativeFeedback>
                 </View>
                 {this.state.articles === 0 &&
-                <ArticleCardLayout onScroll={this._onScroll.bind(this)} categoryName="Актуелно"/>}
+                <ArticleCardLayout onScroll={this._onScroll.bind(this)} navigator={thisClass.props.navigator} categoryName="Актуелно"/>}
                 {this.state.articles === 1 &&
-                <ArticleCardLayout onScroll={this._onScroll.bind(this)} categoryName="Проекти"/>}
+                <ArticleCardLayout onScroll={this._onScroll.bind(this)} navigator={thisClass.props.navigator} categoryName="Проекти"/>}
                 {this.state.isActionButtonVisible ? <ActionButton buttonColor="#4C9BFF">
                         <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
                                            onPress={() => console.log("filter tapped!")}>
