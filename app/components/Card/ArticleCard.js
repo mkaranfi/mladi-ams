@@ -22,15 +22,10 @@ class ArticleCard extends Component {
         classScope = this;
     }
 
-    /*setNativeProps(nativeProps) {
-     this._root.setNativeProps(nativeProps);
-
-     }*/
-
     _onPress(html) {
         classScope.props.navigator.push({
             name: 'DetailView',
-            html: html,
+            html: html
         });
     }
 
@@ -53,7 +48,7 @@ class ArticleCard extends Component {
     }
 
     render() {
-        message = this.parseTimeMessage(this.props.date);
+        let message = this.parseTimeMessage(this.props.date);
         let description = this.props.description;
         let imgSrc = this.props.image;
         return (

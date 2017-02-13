@@ -19,7 +19,6 @@ const ARTICLES_API = 'http://mladi.ams.mk/eduservice.svc/GetArticles';
 class ArticleCardLayout extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             dataSource: this.ds.cloneWithRows(this.ds),
@@ -105,16 +104,11 @@ class ArticleCardLayout extends Component {
         });
     }
 
-    rowPressed(html) {
-        console.log(html);
-        console.log(this.props.navigator);
-    }
-
     _renderRow(rowData, navigator) {
         let title = rowData.Title;
         let date = rowData.Date;
         return (<ArticleCard {...this.props} title={title} date={date} description={rowData.Text} navigator={navigator}
-                             onPress={this.rowPressed.bind(this, rowData.Text)} image={rowData.Thumbnail}/>);
+                            image={rowData.Thumbnail}/>);
     }
 
 }
