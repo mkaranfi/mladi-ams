@@ -134,6 +134,7 @@ class InfoCardLayout extends Component {
                     size="large"
                 />}
                 {!this.state.isLoading && <ListView
+                    onScroll={this.props.onScroll}
                     dataSource={this.state.dataSource}
                     renderRow={this._renderRow}
                 />}

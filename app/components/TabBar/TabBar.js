@@ -4,7 +4,8 @@ import {
     Text,
     View,
     Navigator,
-    TouchableNativeFeedback
+    TouchableNativeFeedback,
+    LayoutAnimation
 } from 'react-native';
 
 import ActionButton from 'react-native-action-button';
@@ -15,18 +16,20 @@ import CustomBar from './CustomBar';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import styles from './styles';
+var loadedCategories = [];
+var searchPressed = false;
+
 class TabBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
             organizations: 0,
             schools: 0,
-            articles: 0
+            articles: 0,
+            searchPressed: false,
+            isActionButtonVisible: true
         };
-        this.props.navigator.initialRoute = {
-            name: 'TabBar',
-            categories: this.props.categories
-        };
+        _listViewOffset = 0;
     }
 
     render() {
@@ -51,6 +54,31 @@ class TabBar extends Component {
         }
     }
 
+    triggerChange(component) {
+        !searchPressed ?
+            component.searchBar.show() : component.searchBar.hide();
+        searchPressed = !searchPressed;
+    }
+
+    _onScroll(event) {
+        const CustomLayoutLinear = {
+            duration: 100,
+            create: {type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity},
+            update: {type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity},
+            delete: {type: LayoutAnimation.Types.linear, property: LayoutAnimation.Properties.opacity}
+        };
+        const currentOffset = event.nativeEvent.contentOffset.y;
+        const direction = (currentOffset > 0 && currentOffset > this._listViewOffset)
+            ? 'down'
+            : 'up';
+        const isActionButtonVisible = direction === 'up';
+        if (isActionButtonVisible !== this.state.isActionButtonVisible) {
+            LayoutAnimation.configureNext(CustomLayoutLinear);
+            this.setState({isActionButtonVisible})
+        }
+        this._listViewOffset = currentOffset
+    }
+
     renderScene(route, navigator) {
         return <ScrollableTabView
             tabBarPosition="bottom"
@@ -59,27 +87,29 @@ class TabBar extends Component {
         >
 
             <View tabLabel="ios-home" style={{flex: 1}}>
-                <CardLayout categoryName={this.props.categories}/>
-                <ActionButton buttonColor="#4C9BFF">
-                    <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
-                                       onPress={() => console.log("filter tapped!")}>
-                        <Icon name="md-search" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                    <ActionButton.Item titleColor="#fff" titleBgColor="#333" buttonColor='#4C9BFF'
-                                       title="Измени категории"
-                                       onPress={() => {
-                                           this.props.navigator.push({
-                                               name: 'CategorySelection'
-                                           })
-                                       }}>
-                        <Icon name="md-settings" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#4C9BFF' title="Зачувани" titleColor="#fff" titleBgColor="#333"
-                                       onPress={() => {
-                                       }}>
-                        <Icon name="md-star" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                </ActionButton>
+                <CardLayout ref={(ref) => this.cardLayout = ref} onScroll={this._onScroll.bind(this)}
+                            change={() => this.triggerChange(this.cardLayout)}
+                            categoryName={this.props.categories}/>
+                {this.state.isActionButtonVisible ? <ActionButton buttonColor="#4C9BFF">
+                        <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
+                                           onPress={() => this.triggerChange(this.cardLayout)}>
+                            <Icon name="md-search" style={styles.actionButtonIcon}/>
+                        </ActionButton.Item>
+                        <ActionButton.Item titleColor="#fff" titleBgColor="#333" buttonColor='#4C9BFF'
+                                           title="Измени категории"
+                                           onPress={() => {
+                                               this.props.navigator.push({
+                                                   name: 'CategorySelection'
+                                               })
+                                           }}>
+                            <Icon name="md-settings" style={styles.actionButtonIcon}/>
+                        </ActionButton.Item>
+                        <ActionButton.Item buttonColor='#4C9BFF' title="Зачувани" titleColor="#fff" titleBgColor="#333"
+                                           onPress={() => {
+                                           }}>
+                            <Icon name="md-star" style={styles.actionButtonIcon}/>
+                        </ActionButton.Item>
+                    </ActionButton> : null}
             </View>
 
             <View tabLabel="ios-book" style={{flex: 1}}>
@@ -102,14 +132,16 @@ class TabBar extends Component {
                         </View>
                     </TouchableNativeFeedback>
                 </View>
-                {this.state.articles === 0 && <ArticleCardLayout categoryName="Актуелно"/>}
-                {this.state.articles === 1 && <ArticleCardLayout categoryName="Проекти"/>}
-                <ActionButton buttonColor="#4C9BFF">
-                    <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
-                                       onPress={() => console.log("filter tapped!")}>
-                        <Icon name="md-search" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                </ActionButton>
+                {this.state.articles === 0 &&
+                <ArticleCardLayout onScroll={this._onScroll.bind(this)} categoryName="Актуелно"/>}
+                {this.state.articles === 1 &&
+                <ArticleCardLayout onScroll={this._onScroll.bind(this)} categoryName="Проекти"/>}
+                {this.state.isActionButtonVisible ? <ActionButton buttonColor="#4C9BFF">
+                        <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
+                                           onPress={() => console.log("filter tapped!")}>
+                            <Icon name="md-search" style={styles.actionButtonIcon}/>
+                        </ActionButton.Item>
+                    </ActionButton> : null}
             </View>
 
             <View tabLabel="ios-people" style={{flex: 1}}>
@@ -164,18 +196,24 @@ class TabBar extends Component {
                         </View>
                     </TouchableNativeFeedback>
                 </View>
-                {this.state.schools === 0 && <InfoCardLayout categoryName="Универзитети"/>}
-                {this.state.schools === 1 && <InfoCardLayout categoryName="Средни училишта"/>}
-                {this.state.schools === 2 && <InfoCardLayout categoryName="Библиотеки"/>}
-                {this.state.schools === 3 && <InfoCardLayout categoryName="Студентски домови"/>}
-                {this.state.schools === 4 && <InfoCardLayout categoryName="Студентска организација"/>}
-                {this.state.schools === 5 && <InfoCardLayout categoryName="Организација"/>}
-                <ActionButton buttonColor="#4C9BFF">
-                    <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
-                                       onPress={() => console.log("filter tapped!")}>
-                        <Icon name="md-search" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                </ActionButton>
+                {this.state.schools === 0 &&
+                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Универзитети"/>}
+                {this.state.schools === 1 &&
+                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Средни училишта"/>}
+                {this.state.schools === 2 &&
+                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Библиотеки"/>}
+                {this.state.schools === 3 &&
+                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Студентски домови"/>}
+                {this.state.schools === 4 &&
+                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Студентска организација"/>}
+                {this.state.schools === 5 &&
+                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Организација"/>}
+                {this.state.isActionButtonVisible ? <ActionButton buttonColor="#4C9BFF">
+                        <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
+                                           onPress={() => console.log("filter tapped!")}>
+                            <Icon name="md-search" style={styles.actionButtonIcon}/>
+                        </ActionButton.Item>
+                    </ActionButton> : null}
             </View>
 
         </ScrollableTabView>;

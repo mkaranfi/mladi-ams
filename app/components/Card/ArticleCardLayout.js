@@ -78,6 +78,7 @@ class ArticleCardLayout extends Component {
                         size="large"
                     />}
                     {!this.state.isLoading && <ListView
+                        onScroll={this.props.onScroll}
                         dataSource={this.state.dataSource}
                         renderRow={(data) => this._renderRow(data, navigator)}
                     />}

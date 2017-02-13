@@ -63,15 +63,6 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 10,
         backgroundColor: 'rgba(0,0,0,0.01)',
-    },
-    touchable: {
-        width: 180,
-        height: 45,
-        backgroundColor: 'mediumaquamarine',
-        borderRadius: 180 / 2,
-        borderColor: 'mediumaquamarine',
-        marginBottom: 10,
-        justifyContent: 'center'
     }
 });
 export default styles;

@@ -64,6 +64,13 @@ let styles = StyleSheet.create({
         fontWeight: '700',
         fontSize: 18
     },
+    listHeading: {
+        marginVertical: 10,
+        fontSize: 35,
+        textAlign: 'center',
+        alignSelf: 'center',
+        color:'#4C9BFF'
+    },
     mediumText: {
         fontSize: 12
     },

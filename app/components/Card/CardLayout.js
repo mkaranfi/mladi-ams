@@ -5,7 +5,8 @@ import React, {Component} from 'react';
 import {ListView, View, Text, AsyncStorage, ActivityIndicator} from 'react-native';
 
 import Card from './Card';
-var moment = require('moment');
+import moment from 'moment';
+import SearchBar from 'react-native-searchbar';
 import styles from './styles';
 const TRAININGS_API = 'http://mladi.ams.mk/eduservice.svc/GetTrainings';
 const INTERNSHIPS_API = 'http://mladi.ams.mk/eduservice.svc/GetInternships';
@@ -24,8 +25,10 @@ class CardLayout extends Component {
     constructor(props) {
         super(props);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        let loading = props.categoryName.length === 0 ? false : true;
+        let loading = props.categoryName.length !== 0;
         this.state = {
+            searchPressed: false,
+            completeData: [],
             dataSource: this.ds.cloneWithRows(this.ds),
             isLoading: loading
         };
@@ -92,6 +95,7 @@ class CardLayout extends Component {
             });
 
             scope.setState({
+                completeData: completeData,
                 dataSource: scope.ds.cloneWithRows(completeData),
                 isLoading: false
             });
@@ -131,6 +135,20 @@ class CardLayout extends Component {
         })
     }
 
+    _handleResults(results) {
+
+        this.setState({
+            dataSource: this.ds.cloneWithRows(results),
+        });
+    }
+
+    _onBackSearchButton() {
+        this.setState({
+            dataSource: this.ds.cloneWithRows(this.state.completeData)
+        });
+        this.props.change();
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -140,10 +158,21 @@ class CardLayout extends Component {
                     size="large"
                 />}
                 {!this.state.isLoading && this.props.categoryName.length !== 0 &&
-                <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={this._renderRow}
-                />}
+                <View>
+                    <SearchBar
+                        onBack={this._onBackSearchButton.bind(this)}
+                        ref={(ref) => this.searchBar = ref}
+                        data={this.state.completeData}
+                        handleResults={this._handleResults.bind(this)}
+                    />
+                    <Text style={styles.listHeading}>Млади АМС</Text>
+                    <ListView
+                        onScroll={this.props.onScroll}
+                        enableEmptySections={true}
+                        dataSource={this.state.dataSource}
+                        renderRow={this._renderRow}
+                    />
+                </View>}
                 {this.props.categoryName.length === 0 &&
                 <View style={{flex: 1, marginHorizontal: 30, justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={{fontSize: 18, textAlign: 'center'}}>Овде нема ништо.
