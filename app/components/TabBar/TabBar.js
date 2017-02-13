@@ -55,9 +55,33 @@ class TabBar extends Component {
     }
 
     triggerChange(component) {
-        !searchPressed ?
+        switch (component) {
+            case 0:
+                component = this.infoLayout0;
+                break;
+            case 1:
+                component = this.infoLayout1;
+                break;
+            case 2:
+                component = this.infoLayout2;
+                break;
+            case 3:
+                component = this.infoLayout3;
+                break;
+            case 4:
+                component = this.infoLayout4;
+                break;
+            case 5:
+                component = this.infoLayout5;
+                break;
+            default:
+                break;
+        }
+        !component.state.searchPressed ?
             component.searchBar.show() : component.searchBar.hide();
-        searchPressed = !searchPressed;
+        component.setState({
+            searchPressed: !component.state.searchPressed
+        });
     }
 
     _onScroll(event) {
@@ -91,25 +115,26 @@ class TabBar extends Component {
                             change={() => this.triggerChange(this.cardLayout)}
                             categoryName={this.props.categories}/>
                 {this.state.isActionButtonVisible ? <ActionButton buttonColor="#4C9BFF">
-                        <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
-                                           onPress={() => this.triggerChange(this.cardLayout)}>
-                            <Icon name="md-search" style={styles.actionButtonIcon}/>
-                        </ActionButton.Item>
-                        <ActionButton.Item titleColor="#fff" titleBgColor="#333" buttonColor='#4C9BFF'
-                                           title="Измени категории"
-                                           onPress={() => {
+                    <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
+                                       onPress={() => this.triggerChange(this.cardLayout)}>
+                        <Icon name="md-search" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                    <ActionButton.Item titleColor="#fff" titleBgColor="#333" buttonColor='#4C9BFF'
+                                       title="Измени категории"
+                                       onPress={() => {
                                                this.props.navigator.push({
-                                                   name: 'CategorySelection'
+                                                   name: 'CategorySelection',
+                                                   categories: this.props.categories
                                                })
                                            }}>
-                            <Icon name="md-settings" style={styles.actionButtonIcon}/>
-                        </ActionButton.Item>
-                        <ActionButton.Item buttonColor='#4C9BFF' title="Зачувани" titleColor="#fff" titleBgColor="#333"
-                                           onPress={() => {
+                        <Icon name="md-settings" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                    <ActionButton.Item buttonColor='#4C9BFF' title="Зачувани" titleColor="#fff" titleBgColor="#333"
+                                       onPress={() => {
                                            }}>
-                            <Icon name="md-star" style={styles.actionButtonIcon}/>
-                        </ActionButton.Item>
-                    </ActionButton> : null}
+                        <Icon name="md-star" style={styles.actionButtonIcon}/>
+                    </ActionButton.Item>
+                </ActionButton> : null}
             </View>
 
             <View tabLabel="ios-book" style={{flex: 1}}>
@@ -133,14 +158,16 @@ class TabBar extends Component {
                     </TouchableNativeFeedback>
                 </View>
                 {this.state.articles === 0 &&
-                <ArticleCardLayout onScroll={this._onScroll.bind(this)} categoryName="Актуелно"/>}
+                <ArticleCardLayout ref={(ref) => this.articleLayout1 = ref}
+                                   change={() => this.triggerChange(this.articleLayout1)}
+                                   onScroll={this._onScroll.bind(this)} categoryName="Актуелно"/>}
                 {this.state.articles === 1 &&
                 <ArticleCardLayout onScroll={this._onScroll.bind(this)} categoryName="Проекти"/>}
-                {this.state.isActionButtonVisible ? <ActionButton buttonColor="#4C9BFF">
-                        <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
-                                           onPress={() => console.log("filter tapped!")}>
-                            <Icon name="md-search" style={styles.actionButtonIcon}/>
-                        </ActionButton.Item>
+                {this.state.isActionButtonVisible && this.state.articles !== 1 ?
+                    <ActionButton icon={<Icon name="md-search" style={styles.actionButtonIcon}/>}
+                                  buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
+                                  onPress={() => this.triggerChange(this.articleLayout1)}>
+
                     </ActionButton> : null}
             </View>
 
@@ -197,22 +224,34 @@ class TabBar extends Component {
                     </TouchableNativeFeedback>
                 </View>
                 {this.state.schools === 0 &&
-                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Универзитети"/>}
+                <InfoCardLayout ref={(ref) => this.infoLayout0 = ref}
+                                change={() => this.triggerChange(this.state.schools)}
+                                onScroll={this._onScroll.bind(this)} categoryName="Универзитети"/>}
                 {this.state.schools === 1 &&
-                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Средни училишта"/>}
+                <InfoCardLayout ref={(ref) => this.infoLayout1 = ref}
+                                change={() => this.triggerChange(this.state.schools)}
+                                onScroll={this._onScroll.bind(this)} categoryName="Средни училишта"/>}
                 {this.state.schools === 2 &&
-                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Библиотеки"/>}
+                <InfoCardLayout ref={(ref) => this.infoLayout2 = ref}
+                                change={() => this.triggerChange(this.state.schools)}
+                                onScroll={this._onScroll.bind(this)} categoryName="Библиотеки"/>}
                 {this.state.schools === 3 &&
-                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Студентски домови"/>}
+                <InfoCardLayout ref={(ref) => this.infoLayout3 = ref}
+                                change={() => this.triggerChange(this.state.schools)}
+                                onScroll={this._onScroll.bind(this)} categoryName="Студентски домови"/>}
                 {this.state.schools === 4 &&
-                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Студентска организација"/>}
+                <InfoCardLayout ref={(ref) => this.infoLayout4 = ref}
+                                change={() => this.triggerChange(this.state.schools)}
+                                onScroll={this._onScroll.bind(this)} categoryName="Студентска организација"/>}
                 {this.state.schools === 5 &&
-                <InfoCardLayout onScroll={this._onScroll.bind(this)} categoryName="Организација"/>}
-                {this.state.isActionButtonVisible ? <ActionButton buttonColor="#4C9BFF">
-                        <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
-                                           onPress={() => console.log("filter tapped!")}>
-                            <Icon name="md-search" style={styles.actionButtonIcon}/>
-                        </ActionButton.Item>
+                <InfoCardLayout ref={(ref) => this.infoLayout5 = ref}
+                                change={() => this.triggerChange(this.state.schools)}
+                                onScroll={this._onScroll.bind(this)} categoryName="Организација"/>}
+                {this.state.isActionButtonVisible ?
+                    <ActionButton icon={<Icon name="md-search" style={styles.actionButtonIcon}/>} buttonColor='#4C9BFF'
+                                  title="Пребарај" titleColor="#fff" titleBgColor="#333"
+                                  onPress={() => this.triggerChange(this.state.schools)}>
+
                     </ActionButton> : null}
             </View>
 

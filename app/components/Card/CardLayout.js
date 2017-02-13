@@ -136,7 +136,6 @@ class CardLayout extends Component {
     }
 
     _handleResults(results) {
-
         this.setState({
             dataSource: this.ds.cloneWithRows(results),
         });
@@ -165,8 +164,8 @@ class CardLayout extends Component {
                         data={this.state.completeData}
                         handleResults={this._handleResults.bind(this)}
                     />
-                    <Text style={styles.listHeading}>Млади АМС</Text>
                     <ListView
+                        style={this.state.searchPressed && styles.searchBarMargin}
                         onScroll={this.props.onScroll}
                         enableEmptySections={true}
                         dataSource={this.state.dataSource}
@@ -189,7 +188,7 @@ class CardLayout extends Component {
         let date = rowData.CrawlDate === undefined ? rowData.Inserted : rowData.CrawlDate;
 
         return (<Card {...this.props} type={rowData.type} title={title} site={source} date={date}
-                      description={rowData.Description} url={rowData.Link}/>);
+                                      description={rowData.Description} url={rowData.Link}/>);
 
     }
 

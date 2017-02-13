@@ -2,7 +2,7 @@
  * Created by student on 1/26/17.
  */
 import React, {Component} from 'react';
-import {View, Text, TouchableHighlight, Navigator, ActivityIndicator} from 'react-native';
+import {View, Text, TouchableHighlight, Navigator, ActivityIndicator, AsyncStorage} from 'react-native';
 
 import Categories from './Categories';
 import Button from './Button';
@@ -14,7 +14,8 @@ class CategorySelection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pressed: false
+            pressed: false,
+            selected: props.categories !== undefined ? props.categories : []
         };
     }
 
@@ -22,6 +23,7 @@ class CategorySelection extends Component {
         this.setState({
             pressed: true
         });
+        AsyncStorage.setItem('Категории', JSON.stringify(selected));
         this.props.navigator.resetTo({
             name: 'TabBar',
             categories: selected
@@ -45,7 +47,7 @@ class CategorySelection extends Component {
             <Text style={styles.leadText}>ОДБЕРИ ШТО ЌЕ ЧИТАШ</Text>
             <Text style={styles.subText}>Допри на категориите за кои сакаш да се информираш на Млади АМС.</Text>
             <View style={{flex: 1}}>
-                <Categories categories={this.setCategories.bind(this)}/>
+                <Categories selected={this.state.selected} categories={this.setCategories.bind(this)}/>
             </View>
             {this.state.pressed && <ActivityIndicator
                 animating={this.state.pressed}

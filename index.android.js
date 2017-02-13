@@ -12,14 +12,12 @@ import {
     View
 } from 'react-native';
 
-import CardLayout from './app/components/Card/CardLayout';
-import TabBar from './app/components/TabBar/TabBar';
-import MyRouter from './app/components/route';
+import PreRouter from './app/components/PreRouter';
 
 export default class mladiams extends Component {
     render() {
         return (
-            <MyRouter />
+            <PreRouter />
         );
     }
 }

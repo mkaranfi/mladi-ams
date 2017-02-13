@@ -17,7 +17,7 @@ class MyRouter extends Component {
     render() {
         return (
             <Navigator
-                initialRoute={{name: 'CategorySelection'}}
+                initialRoute={this.props.initialRoute}
                 configureScene={()=> {return Navigator.SceneConfigs.FloatFromBottom}}
                 renderScene={ this.renderScene.bind(this) }/>
         );
@@ -25,7 +25,7 @@ class MyRouter extends Component {
 
     renderScene(route, navigator) {
         if (route.name == 'CategorySelection') {
-            return <CategorySelection navigator={navigator}/>
+            return <CategorySelection categories={route.categories} navigator={navigator}/>
         }
         if (route.name == 'CardLayout') {
             return <CardLayout navigator={navigator}/>

@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import {ListView, View, Text, AsyncStorage, ActivityIndicator} from 'react-native';
 
 import InfoCard from './InfoCard';
+import SearchBar from 'react-native-searchbar';
 import styles from './styles';
 const ORGANIZATIONS_API = 'http://mladi.ams.mk/eduservice.svc/GetOrganizations';
 const DORMS_API = 'http://mladi.ams.mk/eduservice.svc/GetDorms';
@@ -26,6 +27,8 @@ class InfoCardLayout extends Component {
         super(props);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
+            searchPressed: false,
+            completeData: [],
             dataSource: this.ds.cloneWithRows(this.ds),
             isLoading: true
         };
@@ -89,6 +92,7 @@ class InfoCardLayout extends Component {
         data = scope.filterThroughArray(data, category.type, category.keyword);
         data = data.reverse();
         scope.setState({
+            completeData: data,
             dataSource: scope.ds.cloneWithRows(data),
             isLoading: false
         });
@@ -125,6 +129,19 @@ class InfoCardLayout extends Component {
         })
     }
 
+    _handleResults(results) {
+        this.setState({
+            dataSource: this.ds.cloneWithRows(results)
+        });
+    }
+
+    _onBackSearchButton() {
+        this.setState({
+            dataSource: this.ds.cloneWithRows(this.state.completeData)
+        });
+        this.props.change();
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -133,11 +150,22 @@ class InfoCardLayout extends Component {
                     style={[styles.centering, {height: 80}]}
                     size="large"
                 />}
-                {!this.state.isLoading && <ListView
-                    onScroll={this.props.onScroll}
-                    dataSource={this.state.dataSource}
-                    renderRow={this._renderRow}
-                />}
+                {!this.state.isLoading &&
+                <View>
+                    <SearchBar
+                        onBack={this._onBackSearchButton.bind(this)}
+                        ref={(ref) => this.searchBar = ref}
+                        data={this.state.completeData}
+                        handleResults={this._handleResults.bind(this)}
+                    />
+                    <ListView
+                        style={this.state.searchPressed && styles.searchBarMargin}
+                        onScroll={this.props.onScroll}
+                        enableEmptySections={true}
+                        dataSource={this.state.dataSource}
+                        renderRow={this._renderRow}
+                    />
+                </View>}
             </View>
         );
     }

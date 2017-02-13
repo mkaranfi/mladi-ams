@@ -8,6 +8,7 @@ class Categories extends Component {
 
     constructor(props) {
         super(props);
+        selectedCategories = this.props.selected;
     }
 
     addOrRemoveCategory(categoryName) {

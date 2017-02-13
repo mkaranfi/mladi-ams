@@ -32,7 +32,7 @@ let styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 8,
+        padding: 8
     },
     container: {
         flex: 1,
@@ -70,6 +70,9 @@ let styles = StyleSheet.create({
         textAlign: 'center',
         alignSelf: 'center',
         color:'#4C9BFF'
+    },
+    searchBarMargin: {
+        marginTop: 70
     },
     mediumText: {
         fontSize: 12
