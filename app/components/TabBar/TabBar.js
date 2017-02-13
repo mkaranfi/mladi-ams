@@ -18,10 +18,11 @@ import ScrollableTabView from 'react-native-scrollable-tab-view';
 import styles from './styles';
 var loadedCategories = [];
 var searchPressed = false;
-
+var thisClass;
 class TabBar extends Component {
     constructor(props) {
         super(props);
+        thisClass = this;
         this.state = {
             organizations: 0,
             schools: 0,
@@ -158,16 +159,16 @@ class TabBar extends Component {
                     </TouchableNativeFeedback>
                 </View>
                 {this.state.articles === 0 &&
-                <ArticleCardLayout ref={(ref) => this.articleLayout1 = ref}
+                <ArticleCardLayout ref={(ref) => this.articleLayout1 = ref} navigator={thisClass.props.navigator}
                                    change={() => this.triggerChange(this.articleLayout1)}
                                    onScroll={this._onScroll.bind(this)} categoryName="Актуелно"/>}
                 {this.state.articles === 1 &&
-                <ArticleCardLayout onScroll={this._onScroll.bind(this)} categoryName="Проекти"/>}
+                <ArticleCardLayout navigator={thisClass.props.navigator}
+                                   onScroll={this._onScroll.bind(this)} categoryName="Проекти"/>}
                 {this.state.isActionButtonVisible && this.state.articles !== 1 ?
                     <ActionButton icon={<Icon name="md-search" style={styles.actionButtonIcon}/>}
                                   buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
                                   onPress={() => this.triggerChange(this.articleLayout1)}>
-
                     </ActionButton> : null}
             </View>
 

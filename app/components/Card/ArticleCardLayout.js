@@ -16,10 +16,11 @@ import DetailView from '../DetailView/DetailView';
 import SearchBar from 'react-native-searchbar';
 import styles from './styles';
 const ARTICLES_API = 'http://mladi.ams.mk/eduservice.svc/GetArticles';
-
+var thisClass;
 class ArticleCardLayout extends Component {
     constructor(props) {
         super(props);
+        thisClass = this;
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             completeData: [],
@@ -103,20 +104,30 @@ class ArticleCardLayout extends Component {
 
     render() {
         return (
-            <Navigator
-                initialRoute={{name: 'ArticleCard'}}
-                configureScene={() => {
-                    return Navigator.SceneConfigs.FloatFromBottom
-                }}
-                renderScene={ this.renderScene.bind(this) }/>
+            <View style={styles.container} >
+                {this.state.isLoading && <ActivityIndicator
+                    animating={this.state.isLoading}
+                    style={[styles.centering, {height: 80}]}
+                    size="large"
+                />}
+                {!this.state.isLoading &&
+                <View>
+                    <SearchBar
+                        onBack={this._onBackSearchButton.bind(this)}
+                        ref={(ref) => this.searchBar = ref}
+                        data={this.state.completeData}
+                        handleResults={this._handleResults.bind(this)}
+                    />
+                    <ListView
+                        style={this.state.searchPressed && styles.searchBarMargin}
+                        onScroll={this.props.onScroll}
+                        enableEmptySections={true}
+                        dataSource={this.state.dataSource}
+                        renderRow={(data) => this._renderRow(data, navigator)}
+                    />
+                </View>}
+            </View>
         );
-    }
-
-    onPress() {
-        nav.push({
-            name: 'DetailView',
-            html: text
-        });
     }
 
     _handleResults(results) {
@@ -132,11 +143,11 @@ class ArticleCardLayout extends Component {
         this.props.change();
     }
 
-    _renderRow(rowData, navigator) {
+    _renderRow(rowData) {
         let title = rowData.Title;
         let date = rowData.Date;
-        return (<ArticleCard {...this.props} title={title} date={date} description={rowData.Text} navigator={navigator}
-                                             image={rowData.Thumbnail}/>);
+        return (<ArticleCard {...this.props} title={title} date={date} description={rowData.Text} navigator={thisClass.props.navigator}
+                            image={rowData.Thumbnail}/>);
     }
 
 }

@@ -34,7 +34,7 @@ class MyRouter extends Component {
             return <TabBar categories={route.categories} navigator={navigator} />
         }
         if(route.name == 'DetailView') {
-            return <DetailView html={route.html} navigator={navigator} />
+            return <DetailView html={route.html} title={route.title} navigator={navigator} />
         }
     }
 }
