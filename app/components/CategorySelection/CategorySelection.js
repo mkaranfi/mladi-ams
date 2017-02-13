@@ -2,7 +2,7 @@
  * Created by student on 1/26/17.
  */
 import React, {Component} from 'react';
-import {View, Text, TouchableHighlight, Navigator, ActivityIndicator} from 'react-native';
+import {View, Text, TouchableHighlight, Navigator, BackAndroid, ActivityIndicator} from 'react-native';
 
 import Categories from './Categories';
 import Button from './Button';
@@ -16,6 +16,14 @@ class CategorySelection extends Component {
         this.state = {
             pressed: false
         };
+        var navigator = this.props.navigator;
+        BackAndroid.addEventListener('hardwareBackPress', function() {
+            if (navigator && navigator.getCurrentRoutes().length > 1) {
+                navigator.pop();
+                return true;
+            }
+            return false;
+        });
     }
 
     _onPress() {
