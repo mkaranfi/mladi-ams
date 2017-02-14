@@ -8,16 +8,15 @@ import {
     LayoutAnimation
 } from 'react-native';
 
-import ActionButton from 'react-native-action-button';
 import CardLayout from '../Card/CardLayout';
 import InfoCardLayout from '../Card/InfoCardLayout';
 import ArticleCardLayout from '../Card/ArticleCardLayout';
 import CustomBar from './CustomBar';
+import InformationTab from './InformationTab';
+import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 import styles from './styles';
-var loadedCategories = [];
-var searchPressed = false;
 var thisClass;
 class TabBar extends Component {
     constructor(props) {
@@ -116,26 +115,26 @@ class TabBar extends Component {
                             change={() => this.triggerChange(this.cardLayout)}
                             categoryName={this.props.categories}/>
                 {this.state.isActionButtonVisible ? <ActionButton buttonColor="#4C9BFF">
-                    <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
-                                       onPress={() => this.triggerChange(this.cardLayout)}>
-                        <Icon name="md-search" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                    <ActionButton.Item titleColor="#fff" titleBgColor="#333" buttonColor='#4C9BFF'
-                                       title="Измени категории"
-                                       onPress={() => {
+                        <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
+                                           onPress={() => this.triggerChange(this.cardLayout)}>
+                            <Icon name="md-search" style={styles.actionButtonIcon}/>
+                        </ActionButton.Item>
+                        <ActionButton.Item titleColor="#fff" titleBgColor="#333" buttonColor='#4C9BFF'
+                                           title="Измени категории"
+                                           onPress={() => {
                                                this.props.navigator.push({
                                                    name: 'CategorySelection',
                                                    categories: this.props.categories
                                                })
                                            }}>
-                        <Icon name="md-settings" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#4C9BFF' title="Зачувани" titleColor="#fff" titleBgColor="#333"
-                                       onPress={() => {
+                            <Icon name="md-settings" style={styles.actionButtonIcon}/>
+                        </ActionButton.Item>
+                        <ActionButton.Item buttonColor='#4C9BFF' title="Зачувани" titleColor="#fff" titleBgColor="#333"
+                                           onPress={() => {
                                            }}>
-                        <Icon name="md-star" style={styles.actionButtonIcon}/>
-                    </ActionButton.Item>
-                </ActionButton> : null}
+                            <Icon name="md-star" style={styles.actionButtonIcon}/>
+                        </ActionButton.Item>
+                    </ActionButton> : null}
             </View>
 
             <View tabLabel="ios-book" style={{flex: 1}}>
@@ -255,9 +254,10 @@ class TabBar extends Component {
 
                     </ActionButton> : null}
             </View>
-
+            <View tabLabel="ios-information-circle" style={{flex: 1}}>
+                <InformationTab />
+            </View>
         </ScrollableTabView>;
     }
 }
-
 export default TabBar;

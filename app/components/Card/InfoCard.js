@@ -57,12 +57,6 @@ class InfoCard extends Component {
             </TouchableOpacity>;
         }
 
-        // if (properties['locationX'] !== '' && properties['locationY'] !== '') {
-        //     map = <TouchableOpacity
-        //         onPress={()=>this._onPressMap(properties['locationX'], properties['locationY'])}>
-        //         <Icon style={{color: '#FE7569', fontSize: 28}} name="map-marker"/>
-        //     </TouchableOpacity>
-        // }
         return (
             <View style={styles.infoCard} {...this.props}>
                 <View style={styles.infoCardRow}>

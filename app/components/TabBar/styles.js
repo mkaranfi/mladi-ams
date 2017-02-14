@@ -32,11 +32,30 @@ const styles = StyleSheet.create({
     darkFont: {
         color: '#7d7b7b'
     },
+    informationContainer: {
+        flex: 1,
+        padding: 10
+    },
+    informationHeading: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        color: '#333'
+    },
+    informationTitle: {
+        fontSize: 24,
+        textAlign: 'center',
+        marginBottom: 15,
+        color: '#333'
+    },
     lightBackgroung: {
         backgroundColor: 'transparent'
     },
     lightFont: {
         color: '#efefed'
+    },
+    link: {
+        color: 'blue',
+        textDecorationLine: 'underline'
     },
     saveButton: {
         fontSize: 18,
@@ -48,6 +67,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingBottom: 10,
+    },
+    tabHeading: {
+        textAlign: 'center',
+        fontSize: 30,
     },
     tabs: {
         height: 45,
