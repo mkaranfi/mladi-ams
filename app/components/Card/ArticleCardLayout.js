@@ -69,42 +69,15 @@ class ArticleCardLayout extends Component {
         })
     }
 
-    renderScene(route, navigator) {
-        if (route.name == 'DetailView') {
-            return <DetailView html={route.html} navigator={navigator}/>
-        }
-        if (route.name == 'ArticleCard') {
-            return (
-                <View style={styles.container} navigator={navigator}>
-                    {this.state.isLoading && <ActivityIndicator
-                        animating={this.state.isLoading}
-                        style={[styles.centering, {height: 80}]}
-                        size="large"
-                    />}
-                    {!this.state.isLoading &&
-                    <View>
-                        <SearchBar
-                            onBack={this._onBackSearchButton.bind(this)}
-                            ref={(ref) => this.searchBar = ref}
-                            data={this.state.completeData}
-                            handleResults={this._handleResults.bind(this)}
-                        />
-                        <ListView
-                            style={this.state.searchPressed && styles.searchBarMargin}
-                            onScroll={this.props.onScroll}
-                            enableEmptySections={true}
-                            dataSource={this.state.dataSource}
-                            renderRow={(data) => this._renderRow(data, navigator)}
-                        />
-                    </View>}
-                </View>
-            );
-        }
+    resetDataSource(){
+        this.setState({
+            dataSource: this.ds.cloneWithRows(this.state.completeData)
+        });
     }
 
     render() {
         return (
-            <View style={styles.container} >
+            <View style={styles.container}>
                 {this.state.isLoading && <ActivityIndicator
                     animating={this.state.isLoading}
                     style={[styles.centering, {height: 80}]}
@@ -113,6 +86,8 @@ class ArticleCardLayout extends Component {
                 {!this.state.isLoading &&
                 <View>
                     <SearchBar
+                        onHide={this.resetDataSource.bind(this)}
+                        placeholder="Пребарај..."
                         onBack={this._onBackSearchButton.bind(this)}
                         ref={(ref) => this.searchBar = ref}
                         data={this.state.completeData}
@@ -136,18 +111,23 @@ class ArticleCardLayout extends Component {
         });
     }
 
-    _onBackSearchButton() {
+    resetDataSource(){
         this.setState({
             dataSource: this.ds.cloneWithRows(this.state.completeData)
         });
+    }
+
+    _onBackSearchButton() {
+        this.resetDataSource();
         this.props.change();
     }
 
     _renderRow(rowData) {
         let title = rowData.Title;
         let date = rowData.Date;
-        return (<ArticleCard {...this.props} title={title} date={date} description={rowData.Text} navigator={thisClass.props.navigator}
-                            image={rowData.Thumbnail}/>);
+        return (<ArticleCard {...this.props} title={title} date={date} description={rowData.Text}
+                             navigator={thisClass.props.navigator}
+                             image={rowData.Thumbnail}/>);
     }
 
 }

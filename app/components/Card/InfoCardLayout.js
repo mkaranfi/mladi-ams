@@ -142,6 +142,12 @@ class InfoCardLayout extends Component {
         this.props.change();
     }
 
+    resetDataSource(){
+        this.setState({
+            dataSource: this.ds.cloneWithRows(this.state.completeData)
+        });
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -153,6 +159,8 @@ class InfoCardLayout extends Component {
                 {!this.state.isLoading &&
                 <View>
                     <SearchBar
+                        onHide={this.resetDataSource.bind(this)}
+                        placeholder="Пребарај..."
                         onBack={this._onBackSearchButton.bind(this)}
                         ref={(ref) => this.searchBar = ref}
                         data={this.state.completeData}

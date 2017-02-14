@@ -26,7 +26,6 @@ class TabBar extends Component {
             organizations: 0,
             schools: 0,
             articles: 0,
-            searchPressed: false,
             isActionButtonVisible: true
         };
         _listViewOffset = 0;

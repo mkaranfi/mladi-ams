@@ -141,10 +141,14 @@ class CardLayout extends Component {
         });
     }
 
-    _onBackSearchButton() {
+    resetDataSource(){
         this.setState({
             dataSource: this.ds.cloneWithRows(this.state.completeData)
         });
+    }
+
+    _onBackSearchButton() {
+        this.resetDataSource();
         this.props.change();
     }
 
@@ -159,6 +163,8 @@ class CardLayout extends Component {
                 {!this.state.isLoading && this.props.categoryName.length !== 0 &&
                 <View>
                     <SearchBar
+                        onHide={this.resetDataSource.bind(this)}
+                        placeholder="Пребарај..."
                         onBack={this._onBackSearchButton.bind(this)}
                         ref={(ref) => this.searchBar = ref}
                         data={this.state.completeData}
