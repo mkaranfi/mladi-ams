@@ -130,6 +130,9 @@ class TabBar extends Component {
                         </ActionButton.Item>
                         <ActionButton.Item buttonColor='#4C9BFF' title="Зачувани" titleColor="#fff" titleBgColor="#333"
                                            onPress={() => {
+                                               this.props.navigator.push({
+                                                   name: 'Saved',
+                                               })
                                            }}>
                             <Icon name="md-star" style={styles.actionButtonIcon}/>
                         </ActionButton.Item>

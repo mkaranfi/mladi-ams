@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react';
-import {View, Text, TouchableHighlight, Linking} from 'react-native';
+import {View, Text, AsyncStorage, TouchableHighlight, Linking} from 'react-native';
 
 import styles from './styles';
 
@@ -36,6 +36,30 @@ class Card extends Component {
         return "пред " + message;
     }
 
+    onLongPress() {
+        var item = {}
+        item.type = this.props.type;
+        item.title = this.props.title;
+        item.site = this.props.site;
+        item.date = this.props.date;
+        item.description = this.props.description;
+        item.url = this.props.url;
+        var values = [];
+        try {
+            var value = AsyncStorage.getItem('SavedItems').then((value) => {
+                if (value !== null){
+                    values = JSON.parse(value);
+                    values.push(item);
+                } else {
+                    values.push(item)
+                }
+                AsyncStorage.setItem('SavedItems', JSON.stringify(values));
+            });
+        } catch (error) {
+            // Error retrieving data
+        }
+    }
+
 
     render() {
         let message = this.parseTimeMessage(this.props.date);
@@ -64,7 +88,7 @@ class Card extends Component {
                 break;
         }
         return (
-            <TouchableHighlight onPress={() => this._onPressButton(this.props.url)}>
+            <TouchableHighlight onLongPress={this.onLongPress.bind(this)} onPress={() => this._onPressButton(this.props.url)}>
                 <View style={[styles.card, styles[borderBottomColor]]}
                       ref={component => this._root = component} {...this.props}>
                     <View style={styles.cardRow}>

@@ -8,6 +8,7 @@ import CardLayout from './Card/CardLayout';
 import CategorySelection from './CategorySelection/CategorySelection';
 import TabBar from './TabBar/TabBar';
 import DetailView from './DetailView/DetailView';
+import Saved from './Saved/Saved';
 class MyRouter extends Component {
 
     configureScene() {
@@ -35,6 +36,9 @@ class MyRouter extends Component {
         }
         if(route.name == 'DetailView') {
             return <DetailView html={route.html} title={route.title} navigator={navigator} />
+        }
+        if(route.name == 'Saved') {
+            return <Saved navigator={navigator} />
         }
     }
 }
