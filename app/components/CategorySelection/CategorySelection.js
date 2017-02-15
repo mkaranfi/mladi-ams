@@ -2,7 +2,15 @@
  * Created by student on 1/26/17.
  */
 import React, {Component} from 'react';
-import {View, Text, TouchableHighlight, Navigator, ActivityIndicator, AsyncStorage, BackAndroid} from 'react-native';
+import {
+    View,
+    Text,
+    TouchableHighlight,
+    Navigator,
+    ActivityIndicator,
+    AsyncStorage,
+    BackAndroid
+} from 'react-native';
 import Categories from './Categories';
 import Button from './Button';
 import styles from './styles';
@@ -17,7 +25,7 @@ class CategorySelection extends Component {
             selected: props.categories !== undefined ? props.categories : []
         };
         var navigator = this.props.navigator;
-        BackAndroid.addEventListener('hardwareBackPress', function() {
+        BackAndroid.addEventListener('hardwareBackPress', function () {
             if (navigator && navigator.getCurrentRoutes().length > 1) {
                 navigator.pop();
                 return true;

@@ -16,20 +16,9 @@ let styles = StyleSheet.create({
         height: 100,
         width: 100,
         borderRadius: 50,
+        margin: 5,
         borderWidth: 2,
         justifyContent: 'center'
-    },
-    row1: {
-        flex: 0.8,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'flex-end'
-    },
-    row2: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
     },
     categoriesLayout: {
         flex: 1,
@@ -37,9 +26,6 @@ let styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start'
-    },
-    categoryLayout: {
-        padding: 5
     },
     contentLayout: {
         backgroundColor: '#F5F5F5',
@@ -91,6 +77,18 @@ let styles = StyleSheet.create({
     redFilled: {
         borderColor: '#E95650',
         backgroundColor: '#E95650'
+    },
+    row1: {
+        flex: 0.8,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'flex-end'
+    },
+    row2: {
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'center'
     },
     saveButton: {
         fontSize: 18,

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Animated} from 'react-native';
 
 import Category from './Category';
 import styles from './styles';

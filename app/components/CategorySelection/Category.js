@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, TouchableOpacity, Animated} from 'react-native';
 
 import styles from './styles';
 
@@ -9,6 +9,7 @@ class Category extends Component {
         this.state = {
             pressStatus: this.props.isSelected
         };
+        this.springValue = new Animated.Value(0.3);
     }
 
     _onPress() {
@@ -17,6 +18,24 @@ class Category extends Component {
         this.setState({
             pressStatus: status
         });
+        if (status)
+            this.spring();
+    }
+
+    componentWillMount() {
+        this.props.isSelected ?
+            setTimeout(this.spring.bind(this), Math.random() * ((0.5 - 0.2) + 0.2) * 1000) : this.springValue = new Animated.Value(1);
+    }
+
+    spring() {
+        this.springValue.setValue(0.3);
+        Animated.spring(
+            this.springValue,
+            {
+                toValue: 1,
+                friction: 1
+            }
+        ).start()
     }
 
     render() {
@@ -45,13 +64,15 @@ class Category extends Component {
                 break;
         }
         return (
-            <View style={styles.categoryLayout}>
+            <Animated.View style={{transform: [{scale: this.springValue}]}}>
                 <TouchableOpacity
-                    onPress={this._onPress.bind(this)}
-                    style={[styles.category, this.state.pressStatus ? styles[styleColorPressed] : styles[styleColor]]}>
-                    <Text style={[styles.innerText, this.state.pressStatus ? styles.lightText : styles.darkText]}>{this.props.text}</Text>
+                    style={[styles.category, this.state.pressStatus ? styles[styleColorPressed] : styles[styleColor]]}
+                    onPress={this._onPress.bind(this)}>
+                    <Text
+                        style={[styles.innerText, this.state.pressStatus ? styles.lightText : styles.darkText]}>{this.props.text}</Text>
+
                 </TouchableOpacity>
-            </View>
+            </Animated.View>
         )
     }
 }

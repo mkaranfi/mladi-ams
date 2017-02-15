@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
         padding: 8
     },
     loadingText: {
-        fontSize: 22
+        fontSize: 18
     }
 });
 export default styles;
