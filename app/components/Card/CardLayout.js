@@ -22,6 +22,7 @@ var listingTypes = {
 var categoryAPIs = [];
 var counter = 0;
 var completeData = [];
+var addedCategories = [];
 class CardLayout extends Component {
     constructor(props) {
         super(props);
@@ -44,6 +45,7 @@ class CardLayout extends Component {
     }
 
     getCategoryAPI() {
+        categoryAPIs = [];
         this.props.categoryNames.forEach(function (item) {
             var category = {};
             switch (item) {
@@ -86,8 +88,8 @@ class CardLayout extends Component {
         for (var i = 0; i < data.length; i++) {
             data[i]['type'] = category.keyword;
         }
-        completeData = completeData.concat(data);
         counter++;
+        completeData = completeData.concat(data);
         if (counter === categoryAPIs.length) {
             completeData.sort(function (itemA, itemB) {
                 let date1 = itemA.CrawlDate === undefined ? itemA.Inserted : itemA.CrawlDate;
@@ -96,7 +98,6 @@ class CardLayout extends Component {
                 let dateB = moment(date2, 'DD.MM.YYYY HH:mm:ss').toDate();
                 return dateB - dateA;
             });
-
             scope.setState({
                 completeData: completeData,
                 dataSource: scope.ds.cloneWithRows(completeData),
@@ -107,13 +108,11 @@ class CardLayout extends Component {
     }
 
     goOfflineMode(scope, category, data) {
-        scope.setState({
-            offlineMode: !!data,
-        });
         !!data ? scope.manageDataFromAPI(data, category, scope) :
             scope.setState({
-                isLoading: false
-            })
+                isLoading: false,
+                offlineMode: false
+            });
     }
 
     checkLocalStorage(category, scope) {
@@ -123,10 +122,11 @@ class CardLayout extends Component {
                 scope.goOfflineMode(scope, category, data);
             })
             .catch((err) => {
+                counter++;
                 scope.setState({
                     isLoading: false,
                     offlineMode: false
-                })
+                });
             });
     }
 
@@ -134,22 +134,24 @@ class CardLayout extends Component {
         completeData = [];
         counter = 0;
         categoryAPIs = [];
+        addedCategories = [];
         let thisClassScoped = this;
         this.getCategoryAPI();
         categoryAPIs.forEach(function (category) {
             NetInfo.isConnected.fetch().then(isConnected => {
                 if (!isConnected) {
                     thisClassScoped.checkLocalStorage(category, thisClassScoped);
+                } else {
+                    thisClassScoped.fetchData(category.API).then(function (data) {
+                        AsyncStorage.setItem(category.keyword, JSON.stringify(data)).done();
+                        thisClassScoped.manageDataFromAPI(data, category, thisClassScoped);
+                    })
+                        .catch((err) => {
+                            thisClassScoped.checkLocalStorage(category, thisClassScoped);
+                        });
                 }
-
             });
-            thisClassScoped.fetchData(category.API).then(function (data) {
-                AsyncStorage.setItem(category.keyword, JSON.stringify(data));
-                thisClassScoped.manageDataFromAPI(data, category, thisClassScoped);
-            })
-                .catch((err) => {
-                    thisClassScoped.checkLocalStorage(category, thisClassScoped);
-                });
+
         })
     }
 
@@ -207,12 +209,12 @@ class CardLayout extends Component {
                         renderRow={this._renderRow}
                     />
                 </View>}
-                {this.state.completeData.length === 0 && !this.state.isLoading &&
+                {this.props.categoryNames.length === 0 && !this.state.isLoading &&
                 <View style={{flex: 1, marginHorizontal: 30, justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={{fontSize: 18, textAlign: 'center'}}>Овде нема ништо.
                         Одбери барем една категорија за која сакаш да се информираш.</Text>
                 </View>}
-                {!this.state.isConnected && !this.state.offlineMode && this.state.completeData.length !== 0 &&
+                {!this.state.isConnected && !this.state.offlineMode &&
                 <ErrorHandler/>}
             </View>
         );
