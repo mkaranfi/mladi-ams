@@ -76,11 +76,14 @@ class TabBar extends Component {
             default:
                 break;
         }
-        !component.state.searchPressed ?
-            component.searchBar.show() : component.searchBar.hide();
-        component.setState({
-            searchPressed: !component.state.searchPressed
-        });
+
+        if (component.searchBar !== undefined && component.state.completeData !== []) {
+            !component.state.searchPressed ?
+                component.searchBar.show() : component.searchBar.hide();
+            component.setState({
+                searchPressed: !component.state.searchPressed
+            });
+        }
     }
 
     _onScroll(event) {
@@ -112,7 +115,7 @@ class TabBar extends Component {
             <View tabLabel="ios-home" style={{flex: 1}}>
                 <CardLayout ref={(ref) => this.cardLayout = ref} onScroll={this._onScroll.bind(this)}
                             change={() => this.triggerChange(this.cardLayout)}
-                            categoryName={this.props.categories}/>
+                            categoryNames={this.props.categories}/>
                 {this.state.isActionButtonVisible ? <ActionButton buttonColor="#4C9BFF">
                         <ActionButton.Item buttonColor='#4C9BFF' title="Пребарај" titleColor="#fff" titleBgColor="#333"
                                            onPress={() => this.triggerChange(this.cardLayout)}>
@@ -127,11 +130,6 @@ class TabBar extends Component {
                                                })
                                            }}>
                             <Icon name="md-settings" style={styles.actionButtonIcon}/>
-                        </ActionButton.Item>
-                        <ActionButton.Item buttonColor='#4C9BFF' title="Зачувани" titleColor="#fff" titleBgColor="#333"
-                                           onPress={() => {
-                                           }}>
-                            <Icon name="md-star" style={styles.actionButtonIcon}/>
                         </ActionButton.Item>
                     </ActionButton> : null}
             </View>

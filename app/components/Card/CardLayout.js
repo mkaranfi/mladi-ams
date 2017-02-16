@@ -2,9 +2,10 @@
  * Created by Mile on 24-Jan-17.
  */
 import React, {Component} from 'react';
-import {ListView, View, Text, AsyncStorage, ActivityIndicator} from 'react-native';
+import {ListView, View, Text, AsyncStorage, ActivityIndicator, NetInfo} from 'react-native';
 
 import Card from './Card';
+import ErrorHandler from '../ErrorHandler';
 import moment from 'moment';
 import SearchBar from 'react-native-searchbar';
 import styles from './styles';
@@ -25,12 +26,14 @@ class CardLayout extends Component {
     constructor(props) {
         super(props);
         this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        let loading = props.categoryName.length !== 0;
+        let loading = props.categoryNames.length !== 0;
         this.state = {
             searchPressed: false,
             completeData: [],
             dataSource: this.ds.cloneWithRows(this.ds),
-            isLoading: loading
+            isLoading: loading,
+            isConnected: null,
+            offlineMode: true
         };
     }
 
@@ -41,7 +44,7 @@ class CardLayout extends Component {
     }
 
     getCategoryAPI() {
-        this.props.categoryName.forEach(function (item) {
+        this.props.categoryNames.forEach(function (item) {
             var category = {};
             switch (item) {
                 case 'ПРАКСИ':
@@ -97,9 +100,34 @@ class CardLayout extends Component {
             scope.setState({
                 completeData: completeData,
                 dataSource: scope.ds.cloneWithRows(completeData),
+                offlineMode: true,
                 isLoading: false
             });
         }
+    }
+
+    goOfflineMode(scope, category, data) {
+        scope.setState({
+            offlineMode: !!data,
+        });
+        !!data ? scope.manageDataFromAPI(data, category, scope) :
+            scope.setState({
+                isLoading: false
+            })
+    }
+
+    checkLocalStorage(category, scope) {
+        AsyncStorage.getItem(category.keyword)
+            .then((data) => JSON.parse(data))
+            .then((data) => {
+                scope.goOfflineMode(scope, category, data);
+            })
+            .catch((err) => {
+                scope.setState({
+                    isLoading: false,
+                    offlineMode: false
+                })
+            });
     }
 
     componentWillMount() {
@@ -109,17 +137,18 @@ class CardLayout extends Component {
         let thisClassScoped = this;
         this.getCategoryAPI();
         categoryAPIs.forEach(function (category) {
+            NetInfo.isConnected.fetch().then(isConnected => {
+                if (!isConnected) {
+                    thisClassScoped.checkLocalStorage(category, thisClassScoped);
+                }
+
+            });
             thisClassScoped.fetchData(category.API).then(function (data) {
                 AsyncStorage.setItem(category.keyword, JSON.stringify(data));
                 thisClassScoped.manageDataFromAPI(data, category, thisClassScoped);
             })
                 .catch((err) => {
-                    AsyncStorage.getItem(category.keyword)
-                        .then((data) => JSON.parse(data))
-                        .then((data) => {
-                            data !== null ? thisClassScoped.manageDataFromAPI(data, category, thisClassScoped) :
-                                console.error('Error: ' + err);
-                        });
+                    thisClassScoped.checkLocalStorage(category, thisClassScoped);
                 });
         })
     }
@@ -141,7 +170,7 @@ class CardLayout extends Component {
         });
     }
 
-    resetDataSource(){
+    resetDataSource() {
         this.setState({
             dataSource: this.ds.cloneWithRows(this.state.completeData)
         });
@@ -160,7 +189,7 @@ class CardLayout extends Component {
                     style={[styles.centering, {height: 80}]}
                     size="large"
                 />}
-                {!this.state.isLoading && this.props.categoryName.length !== 0 &&
+                {!this.state.isLoading && this.state.completeData.length !== 0 && this.state.offlineMode &&
                 <View>
                     <SearchBar
                         onHide={this.resetDataSource.bind(this)}
@@ -178,12 +207,13 @@ class CardLayout extends Component {
                         renderRow={this._renderRow}
                     />
                 </View>}
-                {this.props.categoryName.length === 0 &&
+                {this.state.completeData.length === 0 && !this.state.isLoading &&
                 <View style={{flex: 1, marginHorizontal: 30, justifyContent: 'center', alignItems: 'center'}}>
                     <Text style={{fontSize: 18, textAlign: 'center'}}>Овде нема ништо.
                         Одбери барем една категорија за која сакаш да се информираш.</Text>
                 </View>}
-
+                {!this.state.isConnected && !this.state.offlineMode && this.state.completeData.length !== 0 &&
+                <ErrorHandler/>}
             </View>
         );
     }
@@ -194,7 +224,7 @@ class CardLayout extends Component {
         let date = rowData.CrawlDate === undefined ? rowData.Inserted : rowData.CrawlDate;
 
         return (<Card {...this.props} type={rowData.type} title={title} site={source} date={date}
-                                      description={rowData.Description} url={rowData.Link}/>);
+                      description={rowData.Description} url={rowData.Link}/>);
 
     }
 

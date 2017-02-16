@@ -8,11 +8,12 @@ import {
     Text,
     AsyncStorage,
     Navigator,
-    ActivityIndicator
+    ActivityIndicator,
+    NetInfo
 } from 'react-native';
 
 import ArticleCard from './ArticleCard';
-import DetailView from '../DetailView/DetailView';
+import ErrorHandler from '../ErrorHandler';
 import SearchBar from 'react-native-searchbar';
 import styles from './styles';
 const ARTICLES_API = 'http://mladi.ams.mk/eduservice.svc/GetArticles';
@@ -26,7 +27,9 @@ class ArticleCardLayout extends Component {
             completeData: [],
             searchPressed: false,
             dataSource: this.ds.cloneWithRows(this.ds),
-            isLoading: true
+            isLoading: true,
+            isConnected: null,
+            offlineMode: true
         };
     }
 
@@ -34,6 +37,29 @@ class ArticleCardLayout extends Component {
         return fetch(query)
             .then((response) => response.json())
             .then((data) => data)
+    }
+
+    goOfflineMode(scope, data) {
+        scope.setState({
+            offlineMode: !!data,
+        });
+        !!data ? scope.manageDataFromAPI(data, scope) :
+            scope.setState({
+                isLoading: false
+            })
+    }
+
+    checkLocalStorage(category, scope) {
+        AsyncStorage.getItem(category)
+            .then((data) => JSON.parse(data))
+            .then((data) => {
+                scope.goOfflineMode(scope, data);
+            }).catch((err) => {
+            scope.setState({
+                isLoading: false,
+                offlineMode: false
+            })
+        }).done();
     }
 
 
@@ -49,18 +75,15 @@ class ArticleCardLayout extends Component {
 
     componentWillMount() {
         let scope = this;
+        NetInfo.isConnected.fetch().then(isConnected => {
+            if (!isConnected) {
+                scope.checkLocalStorage(scope.props.categoryName, scope)
+            }
+        });
         this.fetchData(ARTICLES_API).then(function (data) {
-            AsyncStorage.setItem(scope.props.categoryName, JSON.stringify(data));
+            AsyncStorage.setItem(scope.props.categoryName, JSON.stringify(data)).done();
             scope.manageDataFromAPI(data, scope);
-        })
-            .catch((err) => {
-                AsyncStorage.getItem(scope.props.categoryName)
-                    .then((data) => JSON.parse(data))
-                    .then((data) => {
-                        data !== null ? scope.manageDataFromAPI(data, scope) :
-                            console.error('Error: ' + err);
-                    });
-            });
+        }).catch((err) => scope.checkLocalStorage(scope.props.categoryName, scope));
     }
 
     filterThroughArray(array, scope) {
@@ -69,7 +92,7 @@ class ArticleCardLayout extends Component {
         })
     }
 
-    resetDataSource(){
+    resetDataSource() {
         this.setState({
             dataSource: this.ds.cloneWithRows(this.state.completeData)
         });
@@ -83,7 +106,7 @@ class ArticleCardLayout extends Component {
                     style={[styles.centering, {height: 80}]}
                     size="large"
                 />}
-                {!this.state.isLoading &&
+                {!this.state.isLoading && this.state.completeData !== [] && this.state.offlineMode &&
                 <View>
                     <SearchBar
                         onHide={this.resetDataSource.bind(this)}
@@ -101,6 +124,7 @@ class ArticleCardLayout extends Component {
                         renderRow={(data) => this._renderRow(data, navigator)}
                     />
                 </View>}
+                {!this.state.isLoading && !this.state.isConnected && !this.state.offlineMode && <ErrorHandler/>}
             </View>
         );
     }
@@ -111,7 +135,7 @@ class ArticleCardLayout extends Component {
         });
     }
 
-    resetDataSource(){
+    resetDataSource() {
         this.setState({
             dataSource: this.ds.cloneWithRows(this.state.completeData)
         });

@@ -2,9 +2,10 @@
  * Created by Mile on 2/8/2017.
  */
 import React, {Component} from 'react';
-import {ListView, View, Text, AsyncStorage, ActivityIndicator} from 'react-native';
+import {ListView, View, Text, AsyncStorage, ActivityIndicator, NetInfo} from 'react-native';
 
 import InfoCard from './InfoCard';
+import ErrorHandler from '../ErrorHandler';
 import SearchBar from 'react-native-searchbar';
 import styles from './styles';
 const ORGANIZATIONS_API = 'http://mladi.ams.mk/eduservice.svc/GetOrganizations';
@@ -30,7 +31,9 @@ class InfoCardLayout extends Component {
             searchPressed: false,
             completeData: [],
             dataSource: this.ds.cloneWithRows(this.ds),
-            isLoading: true
+            isLoading: true,
+            isConnected: null,
+            offlineMode: true
         };
     }
 
@@ -60,8 +63,8 @@ class InfoCardLayout extends Component {
             case 'Универзитети':
                 category.type = listingTypes.UNIVERSITIES;
                 category.API = UNIVERSITIES_API;
-                category.keyword1 = 'универзитети';
-                category.keyword2 = 'установи';
+                category.keyword = 'Универзитети';
+                category.keyword2 = 'Установи';
                 break;
             case 'Студентски домови':
                 category.type = listingTypes.UNDEFINED;
@@ -98,21 +101,43 @@ class InfoCardLayout extends Component {
         });
     }
 
+    goOfflineMode(scope, data) {
+        scope.setState({
+            offlineMode: !!data,
+        });
+        !!data ? scope.manageDataFromAPI(data, scope) :
+            scope.setState({
+                isLoading: false
+            })
+    }
+
+    checkLocalStorage(category, scope) {
+        AsyncStorage.getItem(category.keyword)
+            .then((data) => JSON.parse(data))
+            .then((data) => {
+                scope.goOfflineMode(scope, data);
+            }).catch((err) => {
+            scope.setState({
+                isLoading: false,
+                offlineMode: false
+            })
+        }).done();
+    }
+
     componentWillMount() {
         let thisClassScoped = this;
         this.getCategoryAPI();
-        this.fetchData(category.API).then(function (data) {
-            AsyncStorage.setItem(category.keyword, JSON.stringify(data));
+        NetInfo.isConnected.fetch().then(isConnected => {
+            if (!isConnected) {
+                thisClassScoped.checkLocalStorage(category, thisClassScoped);
+            }
+        });
+        thisClassScoped.fetchData(category.API).then(function (data) {
+            AsyncStorage.setItem(category.keyword, JSON.stringify(data)).done();
             thisClassScoped.manageDataFromAPI(data, thisClassScoped);
-        })
-            .catch((err) => {
-                AsyncStorage.getItem(category.keyword)
-                    .then((data) => JSON.parse(data))
-                    .then((data) => {
-                        data !== null ? thisClassScoped.manageDataFromAPI(data, thisClassScoped) :
-                            console.error('Error: ' + err);
-                    });
-            });
+        }).catch((err) => {
+            thisClassScoped.checkLocalStorage(category, thisClassScoped);
+        });
     }
 
     filterThroughArray(array, type, keyword) {
@@ -120,7 +145,7 @@ class InfoCardLayout extends Component {
             if (type === listingTypes.ORGANIZATION)
                 return item.Student === keyword;
             if (type === listingTypes.UNIVERSITIES)
-                return item.TypeID.includes(category.keyword1) || item.TypeID.includes(category.keyword2);
+                return item.TypeID.includes(category.keyword.toLowerCase()) || item.TypeID.includes(category.keyword2);
             if (type === listingTypes.SCHOOLS)
                 return item.TypeID === keyword;
             if (type === listingTypes.ARTICLES)
@@ -142,7 +167,7 @@ class InfoCardLayout extends Component {
         this.props.change();
     }
 
-    resetDataSource(){
+    resetDataSource() {
         this.setState({
             dataSource: this.ds.cloneWithRows(this.state.completeData)
         });
@@ -156,7 +181,7 @@ class InfoCardLayout extends Component {
                     style={[styles.centering, {height: 80}]}
                     size="large"
                 />}
-                {!this.state.isLoading &&
+                {!this.state.isLoading && this.state.completeData !== [] && this.state.offlineMode &&
                 <View>
                     <SearchBar
                         onHide={this.resetDataSource.bind(this)}
@@ -174,6 +199,7 @@ class InfoCardLayout extends Component {
                         renderRow={this._renderRow}
                     />
                 </View>}
+                {!this.state.isLoading && !this.state.isConnected && !this.state.offlineMode && <ErrorHandler/>}
             </View>
         );
     }
