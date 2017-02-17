@@ -13,12 +13,10 @@ React-Native е работна рамка за развој на повеќе-п
 
 ![alt text](http://i.giphy.com/QiLULjy4xf3Zm.gif "Филтер")
 ![alt text](http://i.giphy.com/1mGuadEfpwItq.gif "Табови")
-![alt text](http://i.giphy.com/dzVGqn7H2l8qY.gif "Ре филтрирање")
+![alt text](http://i.giphy.com/SIfU0X3jgjxG8.gif "Барање")
 
 Дополнително на секој таб постои ActionButton кое  овозможува дополнителна фунцијa за пребаруување. На првиот таб пак, од таму се пристапува и екранот за промена на филтерот. Апликацијата овозможува и кеширање на податоците, а надополнета е и со флуидни анимации. 
 
-![alt text](http://i.giphy.com/SIfU0X3jgjxG8.gif "Барање")
-![alt text](http://i.giphy.com/H4ghOeGaxaYBq.gif "Проекти")	
 
 ## Инсталирање на Проектот
 За да се отвори проектот потребно е да се има инсталирано Android SDK за Андроид и Xcode за iOS.
