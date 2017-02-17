@@ -11,16 +11,23 @@ React-Native е работна рамка за развој на повеќе-п
 
 При првото стартување на апликацијата корисникот гледа екран кој има функција на филтер. Од тука може да одбере што од содржината сака да филтрира. Притоа секоја категорија има своја боја и тоа помага за лесно препознавање на категориите. Главниот дел од апликацијата е организиран во 4 таба, чија содржина соодветстввува со таа на сајтот. Првиот таб содржи информации кои одбира да ги чита корисникот, вториот содржи информации објавени поврзани со Агенцијата за Млади и Спорт, третиот прикажуава информации за образовни институции и организации, а во последниот стојат корисни податоци и информации.  
 
+![alt text](http://i.giphy.com/QiLULjy4xf3Zm.gif "Logo Title Text 1")
+![alt text](http://i.giphy.com/1mGuadEfpwItq.gif "Logo Title Text 1")
+![alt text](http://i.giphy.com/dzVGqn7H2l8qY.gif "Logo Title Text 1")
+
 Дополнително на секој таб постои ActionButton кое  овозможува дополнителна фунцијa за пребаруување. На првиот таб пак, од таму се пристапува и екранот за промена на филтерот. Апликацијата овозможува и кеширање на податоците, а надополнета е и со флуидни анимации. 
-	
+
+![alt text](http://i.giphy.com/SIfU0X3jgjxG8.gif "Logo Title Text 1")
+![alt text](http://i.giphy.com/H4ghOeGaxaYBq.gif "Logo Title Text 1")	
 
 ## Инсталлирање на Проектот
-За да се отвори проектот потребно е да се има инсталирано Android SDK за Андроид и Xcode за iOS.
+За да се отвори проекто потребно е да се има инсталирано Android SDK за Андроид и Xcode за iOS.
 
 ~~~~
 npm install
 
-react-native run-android || react-native run-ios
+react-native run-android
 ~~~~
 
-Дополнително готово APK има на следниот линк: 
+Дополнително готово APK има на следниот линк:   
+https://finkiukim-my.sharepoint.com/personal/kichukov_angjel_students_finki_ukim_mk/_layouts/15/guestaccess.aspx?folderid=05421077ed3be47f3a0fc543d5f289705&authkey=ATD_vpHZbIt9xXwUIqo1ug0
